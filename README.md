@@ -1,5 +1,12 @@
 # bible
 
+This looks promising, but the routing issues are a bit hard.
+
+
+
+
+
+
 ## Project setup
 ```
 npm install
