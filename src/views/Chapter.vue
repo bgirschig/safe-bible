@@ -6,17 +6,7 @@
       <h2 class="current">{{$route.params.chapterIdx}}</h2>
 
       <div class="columns">
-        <template v-for="verse in verses">
-          <sup :key="verse.verseIdx" :id="verse['verseId']">
-            <a :href="verse.bibleHubLink" target="_blank" class="verseNumber">{{verse.verseIdx}}</a>
-          </sup>&nbsp;<!--
-       --><span
-            v-for="(sentence, sentenceIdx) in verse.sentences"
-            :key="`${verse.verseIdx}-${sentenceIdx}`"
-            :class="{censored: sentence.labels.length>0}">
-            &nbsp;&nbsp;&nbsp;&nbsp;{{sentence.text}}
-          </span>
-        </template>
+        <Verse v-for="verse in verses" :key="verse.id" :verse="verse" />
       </div>
     </div>
   </main>
@@ -24,8 +14,10 @@
 
 <script>
 import appState from '@/appState.js';
+import Verse from '@/components/Verse.vue';
 
 export default {
+  components: { Verse },
   data() {
     return {
       verses: null,

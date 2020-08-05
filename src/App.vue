@@ -1,14 +1,20 @@
 <template>
   <div id="app">
-    <div class="debug">Vuejs</div>
     <Controlbar v-if="appState.books.length>0" @toggleIndex="toggleIndex" :navState="appState.nav"/>
     <router-view :key="$route.path"/>
+    <InfoOverlay
+      v-if="appState.currentSentence"
+      ref="overlay"
+      @close="appState.currentSentence=null"
+      :target="appState.currentSentence" />
   </div>
 </template>
 
 <script>
 import Controlbar from '@/components/Controlbar.vue';
 import appState from '@/appState.js';
+import InfoOverlay from '@/components/InfoOverlay.vue';
+import '@/css/text.css';
 
 export default {
   data() {
@@ -22,7 +28,7 @@ export default {
     appState.books = data;
     this.updateAppState();
   },
-  components: { Controlbar },
+  components: { Controlbar, InfoOverlay },
   watch: {
     $route() {
       this.updateAppState();
@@ -40,6 +46,11 @@ export default {
 </script>
 
 <style lang="scss">
+html {
+  overflow-x: hidden;
+  /** Always show the scrollbar, to avoid changing viewport width */
+  overflow-y: scroll;
+}
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -58,18 +69,6 @@ body {
 main {
   min-height: 100vh;
   box-sizing: border-box;
-  padding: 20px 25px;
-}
-
-.debug {
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 999;
-  background-color: red;
-  padding: 5px;
-  display: none;
-}
-.debug:hover {
+  padding-bottom: 68px;
 }
 </style>
