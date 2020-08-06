@@ -2,15 +2,52 @@
   <div id="filthSelector" class="card">
     <p>What do you want to read?</p>
 
-    <FilthSelectorSVG />
+    <!-- eslint-disable -->
+    <svg version="1.1" viewBox="0 0 212 94" xmlns="http://www.w3.org/2000/svg">
+      <path d="m65.544 48.375h34.543" fill="none" stroke="rgb(var(--fontColor))" stroke-width="1.1906"/>
+      <path d="m53.632 22.171 11.613-11.911h34.84" fill="none" stroke="rgb(var(--fontColor))" stroke-width="1.1906"/>
+      <path d="m53.632 73.39 11.613 11.911h34.84" fill="none" stroke="rgb(var(--fontColor))" stroke-width="1.1906"/>
+      <g transform="translate(33.347 47.653)">
+        <g class="dial" @click="selectNext()" :style="{transform: `rotate(${dialAngle}deg)`}">
+          <circle cx="-9.4237e-5" cy="0" r="26.205" fill="var(--accentColor)" stroke-width="1.1911"/>
+          <circle cx="-9.4237e-5" cy="0" r="21.44" fill="var(--accentColor)" stroke="#fff" stroke-width="2.3822"/>
+          <line x1="4.7644" x2="21.44" y1="0" y2="0" stroke="#fff" stroke-width="2.3822"/>
+        </g>
+      </g>
+      <text @click="select(0)" :class="{selected: value === 0}" x="105.84525" y="54.501022" fill="rgb(var(--fontColor))" font-family="sans-serif" font-size="14.333px" letter-spacing="0px" stroke-width=".35832" word-spacing="0px" style="line-height:1.25" xml:space="preserve">
+        <tspan x="105.84525" y="14.501022" font-family="Roboto" font-size="14.333px" stroke-width=".35832" style="font-feature-settings:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-variant-numeric:normal">None of the filth</tspan>
+      </text>
+      <text @click="select(1)" :class="{selected: value === 1}" x="105.33807" y="92.982712" fill="rgb(var(--fontColor))" font-family="sans-serif" font-size="14.333px" letter-spacing="0px" stroke-width=".35832" word-spacing="0px" style="line-height:1.25" xml:space="preserve">
+        <tspan x="105.33807" y="52.982712" font-family="Roboto" font-size="14.333px" stroke-width=".35832" style="font-feature-settings:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-variant-numeric:normal">Keep everything</tspan>
+      </text>
+      <text @click="select(2)" :class="{selected: value === 2}" x="105.26369" y="129.52921" fill="rgb(var(--fontColor))" font-family="sans-serif" font-size="14.333px" letter-spacing="0px" stroke-width=".35832" word-spacing="0px" style="line-height:1.25" xml:space="preserve">
+        <tspan x="105.26369" y="89.52921" font-family="Roboto" font-size="14.333px" stroke-width=".35832" style="font-feature-settings:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-variant-numeric:normal">Only the filth</tspan>
+      </text>
+    </svg>
+    <!-- eslint enable -->
   </div>
 </template>
 
 <script>
-import FilthSelectorSVG from '@/assets/ui/filthSelector.svg';
+import appState from '@/appState.js';
 
 export default {
-  components: { FilthSelectorSVG },
+  computed: {
+    value() {
+      return appState.settings.filthAmount;
+    },
+    dialAngle() {
+      return (this.value - 1) * 40;
+    },
+  },
+  methods: {
+    selectNext() {
+      this.select((appState.settings.filthAmount + 1) % 3);
+    },
+    select(value) {
+      appState.settings.filthAmount = value;
+    },
+  },
 };
 </script>
 
@@ -59,6 +96,13 @@ export default {
   top: 50%;
   right: 13%;
   transform: translate(0, -50%);
+}
+
+text.selected {
+  font-weight: bold;
+}
+text, .dial {
+  cursor: pointer;
 }
 
 .dial.up {

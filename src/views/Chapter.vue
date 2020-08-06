@@ -5,9 +5,10 @@
       <h1>{{appState.bookInfo.full}}</h1>
       <h2 class="current">{{$route.params.chapterIdx}}</h2>
 
-      <div class="columns">
+      <div v-if="verses.length > 0" class="columns">
         <Verse v-for="verse in verses" :key="verse.id" :verse="verse" />
       </div>
+      <div v-else class="emptyMessage">{{ emptyMessage }}</div>
     </div>
   </main>
 </template>
@@ -15,24 +16,63 @@
 <script>
 import appState from '@/appState.js';
 import Verse from '@/components/Verse.vue';
+import { Filth } from '@/enums';
 
 export default {
   components: { Verse },
   data() {
     return {
-      verses: null,
+      rawVerses: null,
       error: null,
       appState,
     };
+  },
+  computed: {
+    verses() {
+      if (!this.rawVerses) return null;
+
+      // Make a copy: we're going to modify the contents
+      const verses = JSON.parse(JSON.stringify(this.rawVerses));
+
+      switch (appState.settings.filthAmount) {
+        case Filth.KEEP_EVERYTHING:
+          return verses;
+        case Filth.NO_FILTH:
+          /* eslint-disable no-param-reassign */
+          return verses.filter((verse) => {
+            verse.sentences = verse.sentences.filter((sentence) => sentence.labels.length === 0);
+            return verse.sentences.length > 0;
+          });
+          /* eslint-enable no-param-reassign */
+        default:
+          /* eslint-disable no-param-reassign */
+          return verses.filter((verse) => {
+            verse.sentences = verse.sentences.filter((sentence) => sentence.labels.length > 0);
+            return verse.sentences.length > 0;
+          });
+          /* eslint-enable no-param-reassign */
+      }
+    },
+    emptyMessage() {
+      switch (appState.settings.filthAmount) {
+        case Filth.NO_FILTH:
+          return 'Sorry, everything here was detected as offensive';
+        case Filth.ONLY_FILTH:
+          return 'Sorry, no filth was found in this chapter';
+        case Filth.KEEP_EVERYTHING:
+        default:
+          return 'Sorry, there is nothing to display here';
+      }
+    },
   },
   async created() {
     const response = await fetch(`/chapter/${this.$route.params.bookId}/${this.$route.params.chapterIdx}`);
     const data = await response.json();
     if (response.ok) {
-      this.verses = data;
+      this.rawVerses = data;
       this.error = null;
     } else {
-      this.verses = null;
+      this.rawVerses = null;
       switch (data.error) {
         case 'BOOK_NOT_FOUND':
           this.error = 'Sorry, the book you\'re looking for was not found';
@@ -48,3 +88,9 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.emptyMessage {
+  text-align: center;
+}
+</style>

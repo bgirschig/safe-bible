@@ -1,7 +1,7 @@
 <template>
   <span
     @click="toggleVisibility"
-    :class="{censored, sentence: true, visible}">
+    :class="{censored, clean, sentence: true, visible}">
     {{text}}
   </span>
 </template>
@@ -33,6 +33,9 @@ export default {
   computed: {
     censored() {
       return this.labelIds.length > 0;
+    },
+    clean() {
+      return this.labelIds.length === 0;
     },
     labels() {
       return this.labelIds.map((key) => labelMap[key]);

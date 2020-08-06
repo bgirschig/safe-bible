@@ -1,4 +1,5 @@
 import Vue from 'vue';
+import { Filth } from '@/enums';
 
 export default new Vue({
   data() {
@@ -7,6 +8,10 @@ export default new Vue({
       bookId: null,
       currentSentence: null,
       currentPanel: null,
+      settings: {
+        filthAmount: Filth.KEEP_EVERYTHING,
+        fontSize: 'medium',
+      },
     };
   },
   computed: {
