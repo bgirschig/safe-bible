@@ -1,6 +1,8 @@
 <template>
   <div class="controlBar">
-    <button @click="$emit('toggleIndex')" class="imageBtn index">
+    <button
+      @click="$emit('toggleIndex')"
+      :class="['imageBtn', {selected: appState.currentPanel === 'bookBrowser'}]">
       <BookIcon />
     </button>
     <div class="navigation">
@@ -8,7 +10,9 @@
       <span class="currentChapter">{{title}}</span>
       <router-link v-visible="next" :to="next || ''"><ArrowRight /></router-link>
     </div>
-    <button @click="$emit('toggleSettings')" class="imageBtn settings">
+    <button
+      @click="$emit('toggleSettings')"
+      :class="['imageBtn', {selected: appState.currentPanel === 'settings'}]">
       <SettingsIcon />
     </button>
   </div>
@@ -22,14 +26,16 @@ import SettingsIcon from '@/assets/icons/settings.svg';
 import appState from '@/appState.js';
 
 export default {
-  props: {
-    navState: { type: Object, default: null },
-  },
   components: {
     ArrowLeft,
     ArrowRight,
     BookIcon,
     SettingsIcon,
+  },
+  data() {
+    return {
+      appState,
+    };
   },
   computed: {
     bookInfo() {
@@ -125,12 +131,10 @@ export default {
   padding: 18px;
   margin: 0;
 }
-.settingsOpen .imageBtn.settings,
-.indexOpen .imageBtn.index {
+.imageBtn.selected {
   background-color: var(--accentColor);
 }
-.settingsOpen .imageBtn.settings svg,
-.indexOpen .imageBtn.index svg {
+.imageBtn.selected {
   fill: white;
 }
 </style>

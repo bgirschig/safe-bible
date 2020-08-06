@@ -12,8 +12,7 @@
     <Controlbar
       v-if="appState.books.length>0"
       @toggleIndex="toggleBrowser"
-      @toggleSettings="toggleSettings"
-      :navState="appState.nav"/>
+      @toggleSettings="toggleSettings"/>
 
     <router-view :key="$route.path"/>
 
