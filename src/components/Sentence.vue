@@ -29,6 +29,7 @@ export default {
   props: {
     text: { type: String, default: '' },
     labelIds: {},
+    verseIdx: { type: Number, default: 0 },
   },
   computed: {
     censored() {

@@ -6,22 +6,68 @@
     <div class="infoOverlay" ref="overlay" @click.stop>
       <header>
         <span>This verse was hidden because it&nbsp;contains</span>
-        <button class="share"><ShareIcon /></button>
       </header>
       <div
         v-for="label in target.labels"
         :key="label.id"
         class="score-display"
         :style="{ backgroundColor: label.color }">{{label.name}}</div>
+
+      <p class="sharing">
+        <ShareButton platformName="email"
+          :url="`mailto:?subject=${shareTitle}&body=${shareText}%0D%0A${shareUrl}`">
+          <emailIcon />
+        </ShareButton>
+        <ShareButton platformName="facebook"
+          :url="`https://www.facebook.com/sharer.php?u=${shareUrl}`">
+          <facebookIcon />
+        </ShareButton>
+        <ShareButton platformName="pinterest"
+          :url="`https://pinterest.com/pin/create/bookmarklet?url=${shareUrl}&description=${shareText}`">
+          <pinterestIcon />
+        </ShareButton>
+        <ShareButton platformName="reddit"
+          :url="`http://www.reddit.com/submit?url=${shareUrl}&title=${shareText}`">
+          <redditIcon />
+        </ShareButton>
+        <ShareButton platformName="twitter"
+          :url="`https://twitter.com/intent/tweet?url=${shareUrl}&text=${shareText}`">
+          <twitterIcon />
+        </ShareButton>
+      </p>
     </div>
   </div>
 </template>
 
 <script>
-import ShareIcon from '@/assets/icons/share.svg';
+import ShareButton from '@/components/ShareButton.vue';
+import emailIcon from '@/assets/icons/social/email.svg';
+import facebookIcon from '@/assets/icons/social/facebook.svg';
+import pinterestIcon from '@/assets/icons/social/pinterest.svg';
+import redditIcon from '@/assets/icons/social/reddit.svg';
+import twitterIcon from '@/assets/icons/social/twitter.svg';
 
 export default {
-  components: { ShareIcon },
+  components: {
+    emailIcon,
+    facebookIcon,
+    pinterestIcon,
+    redditIcon,
+    twitterIcon,
+    ShareButton,
+  },
+  data() {
+    return {
+      shareTitle: '',
+      shareText: '#safeBible #artImproved',
+    };
+  },
+  computed: {
+    shareUrl() {
+      const verseId = `${this.$route.params.bookId}/${this.$route.params.chapterIdx}/${this.target.verseIdx}`;
+      return encodeURIComponent(`https://${window.location.host}/?verse=${verseId}`);
+    },
+  },
   props: {
     target: { type: Object },
   },
@@ -69,7 +115,7 @@ export default {
   width: calc(100vw - 40px);
   max-width: 380px;
 
-  padding: 8px 18px;
+  padding: 11px 13px 11px 21px;
   font-size: 1rem;
 
   background-color: var(--bgColor);
@@ -85,6 +131,7 @@ export default {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin: 10px 0;
 }
 .infoOverlay header button {
   padding: 5px 5px 2px 5px;
@@ -111,4 +158,15 @@ export default {
   height: 100%;
   background-color: rgba(var(--fontColor), 0.8);
 }
+
+.sharing {
+  line-height: 45px;
+  margin-bottom: 0;
+  margin-top: 20px;
+}
+
+.shareButton {
+  margin: 0 3px;
+}
+
 </style>

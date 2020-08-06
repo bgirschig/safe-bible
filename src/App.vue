@@ -89,7 +89,6 @@ export default {
     loadSettings() {
       try {
         const savedSettings = JSON.parse(localStorage.getItem('settings'));
-        console.log(savedSettings);
         if (savedSettings) {
           Object.assign(appState.settings, savedSettings);
         } else {
