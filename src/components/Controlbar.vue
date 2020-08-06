@@ -50,7 +50,7 @@ export default {
       return 0;
     },
     bookId() {
-      return this.$route.params.bookId || this.$route.name || 'FOR';
+      return this.$route.params.bookId || this.$route.name || 'foreword';
     },
     title() {
       if (this.bookInfo.chapterCount > 0) {

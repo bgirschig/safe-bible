@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
+import { frame } from '@/js/promises';
 import Home from '../views/Home.vue';
 import Chapter from '../views/Chapter.vue';
 
@@ -8,17 +9,16 @@ Vue.use(VueRouter);
 const routes = [
   {
     path: '/',
-    name: 'FOR',
     component: Home,
   },
   {
-    path: '/FOR',
-    name: 'FOR',
+    path: '/foreword',
+    name: 'foreword',
     component: Home,
   },
   {
-    path: '/HIG',
-    name: 'HIG',
+    path: '/highlights',
+    name: 'highlights',
     component: Home,
   },
   {
@@ -55,7 +55,12 @@ router.beforeEach((to, from, next) => {
   if (to.name === 'Chapter' && to.params.chapterIdx === undefined) {
     return next(`/${to.params.bookId}/1`);
   }
+  document.documentElement.classList.remove('smooth');
   return next();
+});
+router.afterEach(async () => {
+  await frame();
+  document.documentElement.classList.add('smooth');
 });
 
 export default router;

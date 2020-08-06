@@ -120,6 +120,9 @@ html {
   /** Always show the scrollbar, to avoid changing viewport width */
   overflow-y: scroll;
 }
+html.smooth {
+  scroll-behavior: smooth;
+}
 body {
   margin: 0;
 }
@@ -136,6 +139,7 @@ body {
 
   color: RGB(var(--fontColor));
   background-color: var(--bgColor);
+  scroll-behavior: smooth;
 }
 
 svg {
