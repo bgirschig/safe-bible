@@ -3,7 +3,11 @@
     <h1>Settings</h1>
 
     <p>
-      <button class="nightmodeToggle">Dark Mode</button>
+      <button
+        @click="appState.settings.nightMode = !appState.settings.nightMode"
+        class="nightmodeToggle">
+        Dark Mode
+      </button>
     </p>
 
     <FilthSelector />
@@ -19,8 +23,12 @@
 
 <script>
 import FilthSelector from '@/components/FilthSelector.vue';
+import appState from '@/appState.js';
 
 export default {
+  data() {
+    return { appState };
+  },
   components: { FilthSelector },
 };
 </script>

@@ -1,5 +1,12 @@
 <template>
-  <div id="app" class="medium">
+  <div id="app" :class="{nightMode: appState.settings.nightMode}">
+    <transition name="slidefromleft">
+      <BookBrowser v-if="showBookBrowser"/>
+    </transition>
+    <transition name="slidefromright">
+      <SettingsEditor v-if="showSettings"/>
+    </transition>
+
     <Controlbar
       v-if="appState.books.length>0"
       @toggleIndex="toggleBrowser"
@@ -13,13 +20,6 @@
       ref="overlay"
       @close="appState.currentSentence=null"
       :target="appState.currentSentence" />
-
-    <transition name="slidefromleft">
-      <BookBrowser v-if="showBookBrowser"/>
-    </transition>
-    <transition name="slidefromright">
-      <SettingsEditor v-if="showSettings"/>
-    </transition>
   </div>
 </template>
 
@@ -89,8 +89,9 @@ export default {
     loadSettings() {
       try {
         const savedSettings = JSON.parse(localStorage.getItem('settings'));
+        console.log(savedSettings);
         if (savedSettings) {
-          appState.settings = savedSettings;
+          Object.assign(appState.settings, savedSettings);
         } else {
           console.warn('There were no settings to load. Using default values');
         }
@@ -108,19 +109,39 @@ html {
   /** Always show the scrollbar, to avoid changing viewport width */
   overflow-y: scroll;
 }
+body {
+  // TODO: import fonts
+  margin: 0;
+}
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
 
-body {
-  // TODO: import fonts
-  margin: 0;
   --bgColor: white;
   --fontColor: 0, 0, 0;
   --linkColor: rgb(0, 101, 255);
   --accentColor: #297176;
+
+  color: RGB(var(--fontColor));
+  background-color: var(--bgColor);
+}
+
+svg {
+  fill: RGB(var(--fontColor));
+}
+a {
+  color: var(--linkColor);
+  text-decoration: none;
+}
+
+#app.nightMode {
+  background-color: rgb(25, 25, 25);
+
+  --bgColor: black;
+  --fontColor: 150, 150, 150;
+  --linkColor: rgb(117 164 234);
 }
 
 main {

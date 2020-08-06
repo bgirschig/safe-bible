@@ -11,6 +11,7 @@ export default new Vue({
       settings: {
         filthAmount: Filth.KEEP_EVERYTHING,
         fontSize: 'medium',
+        nightMode: false,
       },
     };
   },
