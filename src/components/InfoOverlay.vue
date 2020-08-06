@@ -23,11 +23,13 @@
           <facebookIcon />
         </ShareButton>
         <ShareButton platformName="pinterest"
-          :url="`https://pinterest.com/pin/create/bookmarklet?url=${shareUrl}&description=${shareText}`">
+          :url="`https://pinterest.com/pin/create/bookmarklet?url=${shareUrl}&description=${shareText}`"
+          :popupSize="[660, 400]">
           <pinterestIcon />
         </ShareButton>
         <ShareButton platformName="reddit"
-          :url="`http://www.reddit.com/submit?url=${shareUrl}&title=${shareText}`">
+          :url="`http://www.reddit.com/submit?url=${shareUrl}&title=${shareText}`"
+          :popupSize="[660, 400]">
           <redditIcon />
         </ShareButton>
         <ShareButton platformName="twitter"
