@@ -130,7 +130,6 @@ export default {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 10px 0;
   line-height: 1.3em;
 }
 .infoOverlay header button {
@@ -147,7 +146,7 @@ export default {
   display: inline-block;
   padding: 4px 14px;
   font-size: 0.8em;
-  margin: 5px 3px;
+  margin: 5px 5px 0 0;
 }
 .overlayBackground {
   position: fixed;
@@ -159,9 +158,8 @@ export default {
 }
 
 .sharing {
-  line-height: 45px;
   margin-bottom: 0;
-  margin-top: 20px;
+  margin-top: 8px;
 }
 
 .shareButton {
