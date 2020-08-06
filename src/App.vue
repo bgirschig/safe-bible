@@ -139,8 +139,9 @@ body {
   --accentColor: #297176;
 
   color: RGB(var(--fontColor));
-  background-color: var(--bgColor);
   scroll-behavior: smooth;
+
+  background-color: rgb(240, 240, 240);
 }
 
 svg {
