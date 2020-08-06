@@ -53,6 +53,7 @@ export default {
       return this.$route.params.bookId || this.$route.name || 'foreword';
     },
     title() {
+      if (!this.bookInfo) return 'Not Found';
       if (this.bookInfo.chapterCount > 0) {
         return `${this.bookInfo.short} ${this.chapterIdx + 1}`;
       } else {
@@ -60,6 +61,7 @@ export default {
       }
     },
     prev() {
+      if (!this.bookInfo) return null;
       let linkBookId = this.bookId;
       let linkChapter = this.chapterIdx - 1;
 
@@ -75,6 +77,7 @@ export default {
       }
     },
     next() {
+      if (!this.bookInfo) return null;
       let linkBookId = this.bookId;
       let linkChapter = this.chapterIdx + 1;
 
