@@ -1,0 +1,495 @@
+[
+  {
+    "id": "foreword",
+    "bibleHubId": null,
+    "short": "Foreword",
+    "full": "Foreword",
+    "group": "annexes"
+  },
+  {
+    "id": "highlights",
+    "bibleHubId": null,
+    "short": "Highlights",
+    "full": "Highlights",
+    "group": "annexes"
+  },
+  {
+    "id": "GEN",
+    "bibleHubId": "genesis",
+    "short": "Genesis",
+    "full": "The First Book of Moses, Commonly Called Genesis",
+    "multiline": "The First Book of Moses\nCommonly Called Genesis",
+    "group": "old-testament"
+  },
+  {
+    "id": "EXO",
+    "bibleHubId": "exodus",
+    "short": "Exodus",
+    "full": "The Second Book of Mosis, Commonly Called Exodus",
+    "multiline": "The Second Book of Mosis\nCommonly Called Exodus",
+    "group": "old-testament"
+  },
+  {
+    "id": "LEV",
+    "bibleHubId": "leviticus",
+    "short": "Leviticus",
+    "full": "The Third Book of Mosis, Commonly Called Leviticus",
+    "multiline": "The Third Book of Mosis\nCommonly Called Leviticus",
+    "group": "old-testament"
+
+  },
+  {
+    "id": "NUM",
+    "bibleHubId": "numbers",
+    "short": "Numbers",
+    "full": "The Fourth Book of Moses, Commonly Called Numbers",
+    "multiline": "The Fourth Book of Moses\nCommonly Called Numbers",
+    "group": "old-testament"
+
+  },
+  {
+    "id": "DEU",
+    "bibleHubId": "deuteronomy",
+    "short": "Deuteronomy",
+    "full": "The Fifth Book of Moses, Commonly Called Deuteronomy",
+    "multiline": "The Fifth Book of Moses\nCommonly Called Deuteronomy",
+    "group": "old-testament"
+
+  },
+  {
+    "id": "JOS",
+    "bibleHubId": "joshua",
+    "short": "Joshua",
+    "full": "The Book of Joshua",
+    "group": "old-testament"
+  },
+  {
+    "id": "JDG",
+    "bibleHubId": "judges",
+    "short": "Judges",
+    "full": "The Book of Judges",
+    "group": "old-testament"
+  },
+  {
+    "id": "RUT",
+    "bibleHubId": "ruth",
+    "short": "Ruth",
+    "full": "The Book of Ruth",
+    "group": "old-testament"
+  },
+  {
+    "id": "1SA",
+    "bibleHubId": "1_samuel",
+    "short": "1 Samuel",
+    "full": "The First Book of Samuel",
+    "group": "old-testament"
+  },
+  {
+    "id": "2SA",
+    "bibleHubId": "2_samuel",
+    "short": "2 Samuel",
+    "full": "The Second Book of Samuel",
+    "group": "old-testament"
+  },
+  {
+    "id": "1KI",
+    "bibleHubId": "1_kings",
+    "short": "1 Kings",
+    "full": "The First Book of Kings",
+    "group": "old-testament"
+  },
+  {
+    "id": "2KI",
+    "bibleHubId": "2_kings",
+    "short": "2 Kings",
+    "full": "The Second Book of Kings",
+    "group": "old-testament"
+  },
+  {
+    "id": "1CH",
+    "bibleHubId": "1_chronicles",
+    "short": "1 Chronicles",
+    "full": "The First Book of Chronicles",
+    "group": "old-testament"
+  },
+  {
+    "id": "2CH",
+    "bibleHubId": "2_chronicles",
+    "short": "2 Chronicles",
+    "full": "The Second Book of Chronicles",
+    "group": "old-testament"
+  },
+  {
+    "id": "EZR",
+    "bibleHubId": "ezra",
+    "short": "Ezra",
+    "full": "The Book of Ezra",
+    "group": "old-testament"
+  },
+  {
+    "id": "NEH",
+    "bibleHubId": "nehemiah",
+    "short": "Nehemiah",
+    "full": "The Book of Nehemiah",
+    "group": "old-testament"
+  },
+  {
+    "id": "EST",
+    "bibleHubId": "esther",
+    "short": "Esther",
+    "full": "The Book of Esther",
+    "group": "old-testament"
+  },
+  {
+    "id": "JOB",
+    "bibleHubId": "job",
+    "short": "Job",
+    "full": "The Book of Job",
+    "group": "old-testament"
+  },
+  {
+    "id": "PSA",
+    "bibleHubId": "psalms",
+    "short": "Psalms",
+    "full": "The Psalms",
+    "group": "old-testament"
+  },
+  {
+    "id": "PRO",
+    "bibleHubId": "proverbs",
+    "short": "Proverbs",
+    "full": "The Proverbs",
+    "group": "old-testament"
+  },
+  {
+    "id": "ECC",
+    "bibleHubId": "ecclesiastes",
+    "short": "Ecclesiastes",
+    "full": "Ecclesiates or, The Preacher",
+    "multiline": "Ecclesiates or\nThe Preacher",
+    "group": "old-testament"
+  },
+  {
+    "id": "SNG",
+    "bibleHubId": "songs",
+    "short": "Songs",
+    "full": "The Song of Solomon",
+    "group": "old-testament"
+  },
+  {
+    "id": "ISA",
+    "bibleHubId": "isaiah",
+    "short": "Isaiah",
+    "full": "The Book of Isaiah",
+    "group": "old-testament"
+  },
+  {
+    "id": "JER",
+    "bibleHubId": "jeremiah",
+    "short": "Jeremiah",
+    "full": "The Book of Jeremiah",
+    "group": "old-testament"
+  },
+  {
+    "id": "LAM",
+    "bibleHubId": "lamentations",
+    "short": "Lamentations",
+    "full": "The Lamentations of Jeremiah",
+    "group": "old-testament"
+  },
+  {
+    "id": "EZK",
+    "bibleHubId": "ezekiel",
+    "short": "Ezekiel",
+    "full": "The Book of Ezekiel",
+    "group": "old-testament"
+  },
+  {
+    "id": "DAN",
+    "bibleHubId": "daniel",
+    "short": "Daniel",
+    "full": "The Book of Daniel",
+    "group": "old-testament"
+  },
+  {
+    "id": "HOS",
+    "bibleHubId": "hosea",
+    "short": "Hosea",
+    "full": "The Book of Hosea",
+    "group": "old-testament"
+  },
+  {
+    "id": "JOL",
+    "bibleHubId": "joel",
+    "short": "Joel",
+    "full": "The Book of Joel",
+    "group": "old-testament"
+  },
+  {
+    "id": "AMO",
+    "bibleHubId": "amos",
+    "short": "Amos",
+    "full": "The Book of Amos",
+    "group": "old-testament"
+  },
+  {
+    "id": "OBA",
+    "bibleHubId": "obadiah",
+    "short": "Obadiah",
+    "full": "The Book of Obadiah",
+    "group": "old-testament"
+  },
+  {
+    "id": "JON",
+    "bibleHubId": "jonah",
+    "short": "Jonah",
+    "full": "The Book of Jonah",
+    "group": "old-testament"
+  },
+  {
+    "id": "MIC",
+    "bibleHubId": "micah",
+    "short": "Micah",
+    "full": "The Book of Micah",
+    "group": "old-testament"
+  },
+  {
+    "id": "NAM",
+    "bibleHubId": "nahum",
+    "short": "Nahum",
+    "full": "The Book of Nahum",
+    "group": "old-testament"
+  },
+  {
+    "id": "HAB",
+    "bibleHubId": "habakkuk",
+    "short": "Habakkuk",
+    "full": "The Book of Habakkuk",
+    "group": "old-testament"
+  },
+  {
+    "id": "ZEP",
+    "bibleHubId": "zephaniah",
+    "short": "Zephaniah",
+    "full": "The Book of Zephaniah",
+    "group": "old-testament"
+  },
+  {
+    "id": "HAG",
+    "bibleHubId": "haggai",
+    "short": "Haggai",
+    "full": "The Book of Haggai",
+    "group": "old-testament"
+  },
+  {
+    "id": "ZEC",
+    "bibleHubId": "zechariah",
+    "short": "Zechariah",
+    "full": "The Book of Zechariah",
+    "group": "old-testament"
+  },
+  {
+    "id": "MAL",
+    "bibleHubId": "malachi",
+    "short": "Malachi",
+    "full": "The Book of Malachi",
+    "group": "old-testament"
+  },
+  {
+    "id": "MAT",
+    "bibleHubId": "matthew",
+    "short": "Matthew",
+    "full": "The Good News According to Matthew",
+    "multiline": "The Good News According to\nMatthew",
+    "group": "new-testament"
+  },
+  {
+    "id": "MRK",
+    "bibleHubId": "mark",
+    "short": "Mark",
+    "full": "The Good News According to Mark",
+    "group": "new-testament",
+    "multiline": "The Good News According to\nMark"
+  },
+  {
+    "id": "LUK",
+    "bibleHubId": "luke",
+    "short": "Luke",
+    "full": "The Good News According to Luke",
+    "group": "new-testament",
+    "multiline": "The Good News According to\nLuke"
+  },
+  {
+    "id": "JHN",
+    "bibleHubId": "john",
+    "short": "John",
+    "full": "The Good News According to John",
+    "group": "new-testament",
+    "multiline": "The Good News According to\nJohn"
+  },
+  {
+    "id": "ACT",
+    "bibleHubId": "acts",
+    "short": "Acts",
+    "full": "The Acts of the Apostles",
+    "group": "new-testament"
+  },
+  {
+    "id": "ROM",
+    "bibleHubId": "romans",
+    "short": "Romans",
+    "full": "Paul’s Letter to the Romans",
+    "group": "new-testament"
+  },
+  {
+    "id": "1CO",
+    "bibleHubId": "1_corinthians",
+    "short": "1 Corinthians",
+    "full": "Paul’s First Letter to the Corinthians",
+    "group": "new-testament",
+    "multiline": "Paul’s First Letter\nto the Corinthians"
+  },
+  {
+    "id": "2CO",
+    "bibleHubId": "2_corinthians",
+    "short": "2 Corinthians",
+    "full": "Paul’s Second Letter to the Corinthians",
+    "group": "new-testament",
+    "multiline": "Paul’s Second Letter\nto the Corinthians"
+  },
+  {
+    "id": "GAL",
+    "bibleHubId": "galatians",
+    "short": "Galatians",
+    "full": "Paul’s Letter to the Galatians",
+    "group": "new-testament"
+  },
+  {
+    "id": "EPH",
+    "bibleHubId": "ephesians",
+    "short": "Ephesians",
+    "full": "Paul’s Letter to the Ephesians",
+    "group": "new-testament"
+  },
+  {
+    "id": "PHP",
+    "bibleHubId": "philippians",
+    "short": "Philippians",
+    "full": "Paul’s Letter to the Philippians",
+    "group": "new-testament"
+  },
+  {
+    "id": "COL",
+    "bibleHubId": "colossians",
+    "short": "Colossians",
+    "full": "Paul’s Letter to the Colossians",
+    "group": "new-testament"
+  },
+  {
+    "id": "1TH",
+    "bibleHubId": "1_thessalonians",
+    "short": "1 Thessalonians",
+    "full": "Paul’s First Letter to the Thessalonians",
+    "group": "new-testament",
+    "multiline": "Paul’s First Letter\nto the Thessalonians"
+  },
+  {
+    "id": "2TH",
+    "bibleHubId": "2_thessalonians",
+    "short": "2 Thessalonians",
+    "full": "Paul’s Second Letter to the Thessalonians",
+    "group": "new-testament",
+    "multiline": "Paul’s Second Letter\nto the Thessalonians"
+  },
+  {
+    "id": "1TI",
+    "bibleHubId": "1_timothy",
+    "short": "1 Timothy",
+    "full": "Paul’s First Letter to Timothy",
+    "group": "new-testament"
+  },
+  {
+    "id": "2TI",
+    "bibleHubId": "2_timothy",
+    "short": "2 Timothy",
+    "full": "Paul’s Second Letter to Timothy",
+    "group": "new-testament"
+  },
+  {
+    "id": "TIT",
+    "bibleHubId": "titus",
+    "short": "Titus",
+    "full": "Paul’s Letter to Titus",
+    "group": "new-testament"
+  },
+  {
+    "id": "PHM",
+    "bibleHubId": "philemon",
+    "short": "Philemon",
+    "full": "Paul’s Letter to Philemon",
+    "group": "new-testament"
+  },
+  {
+    "id": "HEB",
+    "bibleHubId": "hebrews",
+    "short": "Hebrews",
+    "full": "The Letter to the Hebrews",
+    "group": "new-testament"
+  },
+  {
+    "id": "JAS",
+    "bibleHubId": "james",
+    "short": "James",
+    "full": "The Letter from James",
+    "group": "new-testament"
+  },
+  {
+    "id": "1PE",
+    "bibleHubId": "1_peter",
+    "short": "1 Peter",
+    "full": "Peter’s First Letter",
+    "group": "new-testament"
+  },
+  {
+    "id": "2PE",
+    "bibleHubId": "2_peter",
+    "short": "2 Peter",
+    "full": "Peter’s Second Letter",
+    "group": "new-testament"
+  },
+  {
+    "id": "1JN",
+    "bibleHubId": "1_john",
+    "short": "1 John",
+    "full": "John’s First Letter",
+    "group": "new-testament"
+  },
+  {
+    "id": "2JN",
+    "bibleHubId": "2_john",
+    "short": "2 John",
+    "full": "John’s Second Letter",
+    "group": "new-testament"
+  },
+  {
+    "id": "3JN",
+    "bibleHubId": "3_john",
+    "short": "3 John",
+    "full": "John’s Third Letter",
+    "group": "new-testament"
+  },
+  {
+    "id": "JUD",
+    "bibleHubId": "jude",
+    "short": "Jude",
+    "full": "The Letter from Jude",
+    "group": "new-testament"
+  },
+  {
+    "id": "REV",
+    "bibleHubId": "revelation",
+    "short": "Revelation",
+    "full": "The Revelation to John",
+    "group": "new-testament"
+  }
+]
