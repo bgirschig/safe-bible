@@ -14,14 +14,14 @@
           <line x1="4.7644" x2="21.44" y1="0" y2="0" stroke="#fff" stroke-width="2.3822"/>
         </g>
       </g>
-      <text @click="select(0)" :class="{selected: value === 0}" x="105.84525" y="54.501022" fill="rgb(var(--fontColor))" font-family="sans-serif" font-size="14.333px" letter-spacing="0px" stroke-width=".35832" word-spacing="0px" style="line-height:1.25" xml:space="preserve">
-        <tspan x="105.84525" y="14.501022" font-family="Roboto" font-size="14.333px" stroke-width=".35832" style="font-feature-settings:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-variant-numeric:normal">None of the filth</tspan>
+      <text @click="select(0)" :class="{selected: value === 0}" x="105.84525" y="54.501022" letter-spacing="0px" stroke-width=".35832" word-spacing="0px" style="line-height:1.25" xml:space="preserve">
+        <tspan x="105.84525" y="14.501022" stroke-width=".35832">None of the filth</tspan>
       </text>
-      <text @click="select(1)" :class="{selected: value === 1}" x="105.33807" y="92.982712" fill="rgb(var(--fontColor))" font-family="sans-serif" font-size="14.333px" letter-spacing="0px" stroke-width=".35832" word-spacing="0px" style="line-height:1.25" xml:space="preserve">
-        <tspan x="105.33807" y="52.982712" font-family="Roboto" font-size="14.333px" stroke-width=".35832" style="font-feature-settings:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-variant-numeric:normal">Keep everything</tspan>
+      <text @click="select(1)" :class="{selected: value === 1}" x="105.33807" y="92.982712" letter-spacing="0px" stroke-width=".35832" word-spacing="0px" style="line-height:1.25" xml:space="preserve">
+        <tspan x="105.33807" y="52.982712" stroke-width=".35832">Keep everything</tspan>
       </text>
-      <text @click="select(2)" :class="{selected: value === 2}" x="105.26369" y="129.52921" fill="rgb(var(--fontColor))" font-family="sans-serif" font-size="14.333px" letter-spacing="0px" stroke-width=".35832" word-spacing="0px" style="line-height:1.25" xml:space="preserve">
-        <tspan x="105.26369" y="89.52921" font-family="Roboto" font-size="14.333px" stroke-width=".35832" style="font-feature-settings:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-variant-numeric:normal">Only the filth</tspan>
+      <text @click="select(2)" :class="{selected: value === 2}" x="105.26369" y="129.52921" letter-spacing="0px" stroke-width=".35832" word-spacing="0px" style="line-height:1.25" xml:space="preserve">
+        <tspan x="105.26369" y="89.52921" stroke-width=".35832">Only the filth</tspan>
       </text>
     </svg>
     <!-- eslint enable -->
@@ -64,10 +64,12 @@ export default {
   border-radius: 4px;
   margin: 10px;
   box-sizing: border-box;
+  line-height: 2em;
 }
 
 #filthSelector p {
   margin-top: 0;
+  line-height: 2em;
 }
 
 #filthSelector .dial {
@@ -97,7 +99,16 @@ export default {
   right: 13%;
   transform: translate(0, -50%);
 }
+#filthSelector svg text {
+  font-family: 'Roboto', Avenir, Helvetica, Arial, sans-serif;
+  fill: rgb(var(--fontColor));
+  font-size: 14.333px;
 
+  font-feature-settings:normal;
+  font-variant-caps:normal;
+  font-variant-ligatures:normal;
+  font-variant-numeric:normal;
+}
 text.selected {
   font-weight: bold;
 }

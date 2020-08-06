@@ -73,7 +73,24 @@ export default {
   border-right: 1px solid rgba(var(--fontColor), 0.15);
   font-size: 1em;
   text-align: center;
+  font-family: 'Source Serif Pro', serif;
 }
+
+h1 {
+  margin-top: 1.3em;
+  font-weight: normal;
+  text-align: center;
+}
+h1 .highlight {
+  font-family: "Roboto";
+  font-size: 0.8em;
+  font-variant: small-caps;
+}
+
+.columns {
+  line-height: 1.7em;
+}
+
 #contentsTable.open {
   left: 0;
 }
@@ -81,7 +98,6 @@ export default {
   margin-bottom: 0.7em;
   display: inline-block;
   display: block;
-
 }
 
 .books {

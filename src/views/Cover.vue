@@ -33,7 +33,6 @@ export default {
 .cover {
   background-color: var(--accentColor);
   color: #DEA000;
-  font-family: 'Roboto', sans-serif;
   width: 100%;
   height: 100vh;
   z-index: 3;

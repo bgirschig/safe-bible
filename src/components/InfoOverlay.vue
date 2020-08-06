@@ -123,8 +123,6 @@ export default {
   background-color: var(--bgColor);
   box-shadow: rgba(0, 0, 0, 0.7) 0 0 10px;
   border-radius: 4px;
-  font-family: "Roboto", sans-serif;
-
 }
 .infoOverlay button {
   border: none;
@@ -134,6 +132,7 @@ export default {
   justify-content: space-between;
   align-items: center;
   margin: 10px 0;
+  line-height: 1.3em;
 }
 .infoOverlay header button {
   padding: 5px 5px 2px 5px;
@@ -144,7 +143,6 @@ export default {
 }
 .score-display {
   padding: 7px 9px;
-  font-family: "Roboto", sans-serif;
   color: white;
   border-radius: 100px;
   display: inline-block;
@@ -168,7 +166,10 @@ export default {
 }
 
 .shareButton {
-  margin: 0 3px;
+  margin: 0;
 }
-
+.shareButton svg {
+  width: 33px;
+  height: 33px;
+}
 </style>

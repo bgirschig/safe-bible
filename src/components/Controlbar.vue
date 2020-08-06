@@ -99,7 +99,6 @@ export default {
   position: fixed;
   display: flex;
   justify-content: space-between;
-  font-family: 'Roboto', sans-serif;
   border-top: 1px solid rgba(var(--fontColor), 0.15);
   bottom: 0;
   width: 100%;
@@ -116,6 +115,7 @@ export default {
   position: relative;
   bottom: 2px;
   font-size: clamp(9px, 1rem, 5vw);
+  white-space: nowrap;
 }
 
 .controlBar .navigation a,
@@ -134,7 +134,7 @@ export default {
 .imageBtn.selected {
   background-color: var(--accentColor);
 }
-.imageBtn.selected {
+.imageBtn.selected svg {
   fill: white;
 }
 </style>

@@ -121,12 +121,11 @@ html {
   overflow-y: scroll;
 }
 body {
-  // TODO: import fonts
   margin: 0;
 }
 
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'Roboto', Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
@@ -164,7 +163,7 @@ main {
 button, .btnLink {
   background-color: transparent;
   border-radius: 2px;
-  border: 1px solid RGBA(var(--fontColor), 0.15);
+  border: none;
   font-size: inherit;
   padding: 10px 20px;
   color: inherit;

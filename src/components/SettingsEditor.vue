@@ -13,7 +13,7 @@
     <FilthSelector />
 
     <h2>Text size</h2>
-    <p id="fontSizeSelector">
+    <p id="fontSizeSelector" class="textFont">
       <span @click="appState.settings.fontSize = 'compact'"
         class="compact" data-value="compact">Compact</span>
       <span @click="appState.settings.fontSize = 'medium'"
@@ -52,6 +52,10 @@ export default {
   border-left: 1px solid rgba(var(--fontColor), 0.15);
   font-size: 1rem;
   text-align: center;
+}
+
+h1, h2 {
+  line-height: 2em;
 }
 
 #settings button {
