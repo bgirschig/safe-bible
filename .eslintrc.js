@@ -16,5 +16,8 @@ module.exports = {
     'no-else-return': 'off',
     'prefer-destructuring': 'off',
     'import/prefer-default-export': 'off',
+    "prefer-const": ["error", {
+      "destructuring": "all",
+    }],
   },
 };

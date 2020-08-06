@@ -3,6 +3,7 @@ import VueRouter from 'vue-router';
 import { frame } from '@/js/promises';
 import Home from '../views/Home.vue';
 import Chapter from '../views/Chapter.vue';
+import Highlights from '../views/Highlights.vue';
 
 Vue.use(VueRouter);
 
@@ -19,7 +20,7 @@ const routes = [
   {
     path: '/highlights',
     name: 'highlights',
-    component: Home,
+    component: Highlights,
   },
   {
     path: '/:bookId/:chapterIdx?',

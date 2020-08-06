@@ -5,6 +5,7 @@ export default new Vue({
   data() {
     return {
       books: [],
+      highlights: [],
       bookId: null,
       currentSentence: null,
       currentPanel: null,

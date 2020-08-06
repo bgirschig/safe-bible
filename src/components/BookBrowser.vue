@@ -7,7 +7,7 @@
         v-for="book in annexes"
         :key="book.id"
         class="bookLink"
-        to="/#main">
+        :to="`/${book.id}`">
         {{ book.short }}
       </router-link>
     </div>

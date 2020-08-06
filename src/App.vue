@@ -89,9 +89,10 @@ export default {
       appState.bookId = this.$route.params.bookId;
     },
     async loadBooks() {
-      const response = await fetch('http://localhost:8080/books');
+      const response = await fetch('/books');
       const data = await response.json();
-      appState.books = data;
+      appState.books = data.books;
+      appState.highlights = data.highlights;
       this.updateAppState();
     },
     loadSettings() {
