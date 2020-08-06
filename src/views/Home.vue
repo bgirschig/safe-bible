@@ -67,8 +67,16 @@
 
         <h1 id="howto">Let's go!</h1>
         <p class="center">
-          <a class="btnLink accent" href="/highlights" onclick="_paq.push(['trackEvent', 'Cover', 'Start Button', 'Highlights']);">Read the best bits</a>
-          <a class="btnLink" href="/chapter/GEN/1" onclick="_paq.push(['trackEvent', 'Cover', 'Start Button', 'Start']);">Read from the start</a>
+          <a
+            class="cta btnLink accent"
+            href="/highlights">
+            Read the best bits
+          </a>
+          <a
+            class="cta btnLink"
+            href="/GEN/1">
+            Read from the start
+          </a>
         </p>
       </div>
     </main>
@@ -83,3 +91,9 @@ export default {
   components: { Cover, Verse },
 };
 </script>
+
+<style>
+.cta {
+  margin: 4px;
+}
+</style>

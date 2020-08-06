@@ -137,4 +137,7 @@ export default {
 .imageBtn.selected svg {
   fill: white;
 }
+button {
+  border: none;
+}
 </style>

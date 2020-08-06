@@ -149,6 +149,9 @@ a {
   color: var(--linkColor);
   text-decoration: none;
 }
+.center {
+  text-align: center;
+}
 
 #app.nightMode {
   background-color: rgb(25, 25, 25);
@@ -173,6 +176,7 @@ button, .btnLink {
   color: inherit;
   display: inline-block;
   line-height: 1em;
+  border: 1px solid RGBA(var(--fontColor), 0.15);
 }
 button:hover, .btnLink:hover {
   cursor: pointer;
