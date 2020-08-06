@@ -46,7 +46,8 @@
               bibleHubLink: 'https://biblehub.com/genesis/17-14.htm',
               sentences: [
                 {
-                  text: 'The uncircumcised male who is not circumcised in the flesh of his foreskin, that soul shall be cut off from his people.',
+                  text: 'The uncircumcised male who is not circumcised in the flesh of his'+
+                    'foreskin, that soul shall be cut off from his people.',
                   labels: ['THREAT', 'INFLAMMATORY', 'SEXUALLY_EXPLICIT', 'OBSCENE'],
                 }
               ]

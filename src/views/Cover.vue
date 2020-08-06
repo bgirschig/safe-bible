@@ -12,8 +12,7 @@
       <Cross />
     </div>
     <div class="buttonZone">
-      <a href="#main" class="scrollButton"
-      onclick="_paq.push(['trackEvent', 'Cover', 'ScrollButton']);">
+      <a href="#main" class="scrollButton">
         <ArrowDown />
       </a>
     </div>
