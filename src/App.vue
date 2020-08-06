@@ -47,10 +47,8 @@ export default {
     },
   },
   async mounted() {
-    const response = await fetch('http://localhost:8080/books');
-    const data = await response.json();
-    appState.books = data;
-    this.updateAppState();
+    this.loadSettings();
+    this.loadBooks();
   },
   components: {
     Controlbar,
@@ -63,6 +61,14 @@ export default {
       this.updateAppState();
       appState.currentPanel = null;
     },
+    'appState.settings': {
+      deep: true,
+      handler() {
+        // save settings when they get changed
+        const settingsStr = JSON.stringify(appState.settings);
+        localStorage.setItem('settings', settingsStr);
+      },
+    },
   },
   methods: {
     toggleBrowser() {
@@ -73,6 +79,24 @@ export default {
     },
     updateAppState() {
       appState.bookId = this.$route.params.bookId;
+    },
+    async loadBooks() {
+      const response = await fetch('http://localhost:8080/books');
+      const data = await response.json();
+      appState.books = data;
+      this.updateAppState();
+    },
+    loadSettings() {
+      try {
+        const savedSettings = JSON.parse(localStorage.getItem('settings'));
+        if (savedSettings) {
+          appState.settings = savedSettings;
+        } else {
+          console.warn('There were no settings to load. Using default values');
+        }
+      } catch {
+        console.warn('Could not load previous settings. Using default values');
+      }
     },
   },
 };
