@@ -33,7 +33,7 @@ export default {
   },
   computed: {
     bookInfo() {
-      return appState.bookMap[this.bookId] || {};
+      return appState.bookMap[this.bookId];
     },
     chapterIdx() {
       if (this.$route.params.chapterIdx) return (parseInt(this.$route.params.chapterIdx, 10) - 1);
@@ -44,8 +44,7 @@ export default {
       return 0;
     },
     bookId() {
-      console.log(this.$route.name);
-      return this.$route.params.bookId || this.$route.name || 'COV';
+      return this.$route.params.bookId || this.$route.name || 'FOR';
     },
     title() {
       if (this.bookInfo.chapterCount > 0) {
@@ -77,7 +76,6 @@ export default {
         if (!this.bookInfo.next) return null;
         linkBookId = this.bookInfo.next;
         linkChapter = 0;
-        console.log(this.bookInfo);
       }
 
       if (appState.bookMap[linkBookId].chapterCount > 0) {

@@ -8,7 +8,7 @@ Vue.use(VueRouter);
 const routes = [
   {
     path: '/',
-    name: 'COV',
+    name: 'FOR',
     component: Home,
   },
   {
