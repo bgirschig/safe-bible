@@ -18,7 +18,7 @@
         v-for="book in oldTestament"
         :key="book.id"
         class="bookLink"
-        :to="`/${book.id}/1`">
+        :to="`/${book.id}`">
         {{ book.short }}
       </router-link>
     </div>
@@ -29,7 +29,7 @@
         v-for="book in newTestament"
         :key="book.id"
         class="bookLink"
-        :to="`/${book.id}/1`">
+        :to="`/${book.id}`">
         {{ book.short }}
       </router-link>
     </div>
@@ -93,5 +93,9 @@ export default {
 }
 .columns {
   column-count: 2;
+}
+.router-link-active {
+  color: var(--accentColor);
+  font-weight: bold;
 }
 </style>

@@ -51,4 +51,11 @@ const router = new VueRouter({
   },
 });
 
+router.beforeEach((to, from, next) => {
+  if (to.name === 'Chapter' && to.params.chapterIdx === undefined) {
+    return next(`/${to.params.bookId}/1`);
+  }
+  return next();
+});
+
 export default router;
