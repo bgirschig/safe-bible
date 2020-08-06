@@ -66,8 +66,7 @@ export default {
   },
   computed: {
     shareUrl() {
-      const verseId = `${this.$route.params.bookId}/${this.$route.params.chapterIdx}/${this.target.verseIdx}`;
-      return encodeURIComponent(`https://${window.location.host}/?verse=${verseId}`);
+      return encodeURIComponent(`https://${window.location.host}/?verse=${this.target.verseId}`);
     },
   },
   props: {

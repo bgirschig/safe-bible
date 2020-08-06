@@ -7,7 +7,7 @@
       :key="`${verse.verseIdx}-${sentenceIdx}`"
       :text="sentence.text"
       :labelIds="sentence.labels"
-      :verseIdx="verse.verseIdx"
+      :verseId="verse.verseId"
     />
   </span>
 </template>
