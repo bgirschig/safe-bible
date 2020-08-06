@@ -3,7 +3,22 @@
     <div v-if="error" class="errorDisplay">{{error}}</div>
     <div v-if="verses" class="text">
       <h1>{{appState.bookInfo.full}}</h1>
-      <h2 class="current">{{$route.params.chapterIdx}}</h2>
+
+      <div class="chapterSelector">
+        <div class="before">
+          <router-link v-for="idx in current-1" :key="idx"
+            :to="`/${$route.params.bookId}/${current-idx}`">
+            {{current-idx}}
+          </router-link>
+        </div>
+        <h2 class="current">{{current}}</h2>
+        <div class="next">
+          <router-link v-for="idx in nextChaptersCount" :key="idx"
+            :to="`/${$route.params.bookId}/${current + idx}`">
+            {{current + idx}}
+          </router-link>
+        </div>
+      </div>
 
       <div v-if="verses.length > 0" class="columns">
         <Verse v-for="verse in verses" :key="verse.id" :verse="verse" />
@@ -28,6 +43,12 @@ export default {
     };
   },
   computed: {
+    current() {
+      return parseInt(this.$route.params.chapterIdx, 10);
+    },
+    nextChaptersCount() {
+      return appState.bookInfo.chapterCount - this.current;
+    },
     verses() {
       if (!this.rawVerses) return null;
 
@@ -92,5 +113,34 @@ export default {
 <style scoped>
 .emptyMessage {
   text-align: center;
+}
+
+.chapterSelector {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 -1.5em 40px -1.5em;
+}
+h2 {
+  margin: 0;
+}
+.current {
+  margin: 0 0.6em;
+  flex: 0 0;
+}
+.before {
+  text-align: right;
+  direction: rtl;
+}
+.next, .before {
+  width: 50%;
+  flex: 1 1;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.next a, .before a {
+  margin: 0 0.2em;
+  font-size: 1.2em;
+  color: rgba(var(--fontColor), 0.25);
 }
 </style>
