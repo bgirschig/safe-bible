@@ -6,6 +6,7 @@ export default new Vue({
       books: [],
       bookId: null,
       currentSentence: null,
+      currentPanel: null,
     };
   },
   computed: {

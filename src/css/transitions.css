@@ -1,0 +1,15 @@
+.slidefromleft-enter-active, .slidefromleft-leave-active {
+  transition: transform 0.3s;
+}
+.slidefromleft-enter,
+.slidefromleft-leave-to {
+  transform: translateX(-100%);
+}
+
+.slidefromright-enter-active, .slidefromright-leave-active {
+  transition: transform 0.3s;
+}
+.slidefromright-enter,
+.slidefromright-leave-to {
+  transform: translateX(100%);
+}
