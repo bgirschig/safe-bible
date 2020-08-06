@@ -47,6 +47,7 @@ export default {
       return parseInt(this.$route.params.chapterIdx, 10);
     },
     nextChaptersCount() {
+      if (!appState.bookInfo.chapterCount) return 0;
       return appState.bookInfo.chapterCount - this.current;
     },
     verses() {
