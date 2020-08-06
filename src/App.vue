@@ -1,5 +1,7 @@
 <template>
-  <div id="app" :class="[appState.settings.fontSize, {nightMode: appState.settings.nightMode}]">
+  <div id="app"
+    @keydown.esc="closeEverything"
+    :class="[appState.settings.fontSize, {nightMode: appState.settings.nightMode}]">
     <transition name="slidefromleft">
       <BookBrowser v-if="showBookBrowser"/>
     </transition>
@@ -14,6 +16,13 @@
       :navState="appState.nav"/>
 
     <router-view :key="$route.path"/>
+
+    <transition name="fade">
+      <div
+        v-if="appState.currentPanel"
+        @click="appState.currentPanel=null"
+        class="sidepanelOverlay" />
+    </transition>
 
     <InfoOverlay
       v-if="appState.currentSentence"
@@ -59,7 +68,7 @@ export default {
   watch: {
     $route() {
       this.updateAppState();
-      appState.currentPanel = null;
+      this.closeEverything();
     },
     'appState.settings': {
       deep: true,
@@ -97,6 +106,10 @@ export default {
       } catch {
         console.warn('Could not load previous settings. Using default values');
       }
+    },
+    closeEverything() {
+      appState.currentPanel = null;
+      appState.currentSentence = null;
     },
   },
 };
@@ -171,5 +184,15 @@ button.imageBtn {
 .accent {
   background-color: var(--accentColor);
   color: white;
+}
+
+.sidepanelOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  background-color: RGBA(var(--fontColor), 0.2);
 }
 </style>

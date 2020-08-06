@@ -111,7 +111,7 @@ export default {
   with the box visible to the user */
   transform: translate(-5px, calc(-100% - 10px));
   position: absolute;
-  z-index: 2;
+  z-index: 1;
   overflow: hidden;
   box-sizing: border-box;
   width: calc(100vw - 40px);

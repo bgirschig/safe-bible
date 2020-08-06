@@ -65,7 +65,7 @@ export default {
   background-color: var(--bgColor);
   width: 100%;
   height: calc(100% - 63px);
-  z-index: 2;
+  z-index: 3;
   padding: 15px;
   box-sizing: border-box;
   overflow-y: auto;
