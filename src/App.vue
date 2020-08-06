@@ -1,5 +1,5 @@
 <template>
-  <div id="app" :class="{nightMode: appState.settings.nightMode}">
+  <div id="app" :class="[appState.settings.fontSize, {nightMode: appState.settings.nightMode}]">
     <transition name="slidefromleft">
       <BookBrowser v-if="showBookBrowser"/>
     </transition>

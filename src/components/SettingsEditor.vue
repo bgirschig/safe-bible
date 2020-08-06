@@ -14,9 +14,12 @@
 
     <h2>Text size</h2>
     <p id="fontSizeSelector">
-      <span class="compact" data-value="compact">Compact</span>
-      <span class="medium" data-value="medium">Medium</span>
-      <span class="large" data-value="large">Large</span>
+      <span @click="appState.settings.fontSize = 'compact'"
+        class="compact" data-value="compact">Compact</span>
+      <span @click="appState.settings.fontSize = 'medium'"
+        class="medium" data-value="medium">Medium</span>
+      <span @click="appState.settings.fontSize = 'large'"
+        class="large" data-value="large">Large</span>
     </p>
   </div>
 </template>
