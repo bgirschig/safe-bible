@@ -15,7 +15,6 @@ for key in labelMap:
   labelMap[key]["id"] = key
 
 baseUrl = "https://bible.artimproved.com"
-baseUrl = "http://127.0.0.1:8080"
 sharingDefaults = {
   "title": "The [safe] Holy Bible",
   "description": "Read the bible without the difficult parts, thanks to AI",
