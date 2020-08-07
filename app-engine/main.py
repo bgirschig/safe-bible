@@ -48,6 +48,7 @@ def parsePath(path):
   }
 
 # Todo: do this once and put it in memory
+@app.route("/books/")
 @app.route("/books")
 def booksHandler():
   bookCount = len(ordered_books)
@@ -67,6 +68,7 @@ def booksHandler():
     "labelMap": labelMap,
   })
 
+@app.route("/chapter/<string:bookId>/<int:chapterIdx>/")
 @app.route("/chapter/<string:bookId>/<int:chapterIdx>")
 def chapterHandler(bookId, chapterIdx):
   chapterIdx -= 1
@@ -99,6 +101,7 @@ def getVerse(verseId):
 
   return verse
 
+@app.route('/shareImage/<bookId>/<int:chapter>/<int:verse>/')
 @app.route('/shareImage/<bookId>/<int:chapter>/<int:verse>')
 def getVerseImage(bookId, chapter, verse):
   verseData = books[bookId]["chapters"][chapter-1][verse-1]
@@ -115,7 +118,9 @@ def getVerseImage(bookId, chapter, verse):
 
   return send_file(img, mimetype='image/png')
 
+@app.route('/shareImage/<bookId>/')
 @app.route('/shareImage/<bookId>')
+@app.route('/shareImage/<bookId>/<int:chapter>/')
 @app.route('/shareImage/<bookId>/<int:chapter>')
 def getChapterImage(bookId, chapter=1):
   chapterData = books[bookId]["chapters"][chapter-1]
@@ -124,6 +129,7 @@ def getChapterImage(bookId, chapter=1):
   img = shareImage.makeChapterImage(title, labels, chapter)
   return send_file(img, mimetype='image/png'), 200
 
+@app.route('/shareImage/')
 @app.route('/shareImage')
 def getStaticShareImage():
   return send_file(
