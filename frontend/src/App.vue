@@ -32,6 +32,7 @@
 </template>
 
 <script>
+import { matomoCustomVariables, Filth, getEnumValueName } from '@/enums.js';
 import Controlbar from '@/components/Controlbar.vue';
 import appState from '@/appState.js';
 import InfoOverlay from '@/components/InfoOverlay.vue';
@@ -114,6 +115,15 @@ export default {
         } else {
           console.warn('There were no settings to load. Using default values');
         }
+
+        // setup visit's settings for analytics
+        const filthName = getEnumValueName(Filth, appState.settings.filthAmount);
+        window._paq.push(['setCustomVariable',
+          matomoCustomVariables.FONT_SIZE, 'font-size', appState.settings.fontSize]);
+        window._paq.push(['setCustomVariable',
+          matomoCustomVariables.DARK_MODE, 'dark-mode', appState.settings.nightMode]);
+        window._paq.push(['setCustomVariable',
+          matomoCustomVariables.FILTH_SELECT, 'filth-amount', filthName]);
       } catch {
         console.warn('Could not load previous settings. Using default values');
       }

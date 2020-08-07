@@ -10,6 +10,7 @@ Vue.use(VueMatomo, matomoConfig);
 Vue.directive('visible', (el, binding) => {
   el.style.visibility = binding.value ? 'visible' : 'hidden'; // eslint-disable-line no-param-reassign
 });
+Vue.prototype.$window = window;
 
 Vue.config.productionTip = false;
 

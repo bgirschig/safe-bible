@@ -19,5 +19,6 @@ module.exports = {
     "prefer-const": ["error", {
       "destructuring": "all",
     }],
+    "no-underscore-dangle": 'off',
   },
 };

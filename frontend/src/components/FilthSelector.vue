@@ -29,23 +29,21 @@
 </template>
 
 <script>
-import appState from '@/appState.js';
-
 export default {
+  props: {
+    value: { type: Number, default: 1 },
+  },
   computed: {
-    value() {
-      return appState.settings.filthAmount;
-    },
     dialAngle() {
       return (this.value - 1) * 40;
     },
   },
   methods: {
     selectNext() {
-      this.select((appState.settings.filthAmount + 1) % 3);
+      this.select((this.value + 1) % 3);
     },
     select(value) {
-      appState.settings.filthAmount = value;
+      this.$emit('change', value);
     },
   },
 };

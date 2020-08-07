@@ -37,6 +37,7 @@ export default {
     },
     async reveal() {
       if (!this.censored) return;
+      this.$matomo.trackEvent('revealVerse', this.verseId);
       appState.currentSentence = this;
     },
   },

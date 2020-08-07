@@ -4,21 +4,21 @@
 
     <p>
       <button
-        @click="appState.settings.nightMode = !appState.settings.nightMode"
+        @click="setDarkMode(!appState.settings.nightMode)"
         class="nightmodeToggle">
         Dark Mode
       </button>
     </p>
 
-    <FilthSelector />
+    <FilthSelector @change="setFilthAmount" :value="appState.settings.filthAmount"/>
 
     <h2>Text size</h2>
     <p id="fontSizeSelector" class="textFont">
-      <span @click="appState.settings.fontSize = 'compact'"
+      <span @click="setFontSize('compact')"
         class="compact" data-value="compact">Compact</span>
-      <span @click="appState.settings.fontSize = 'medium'"
+      <span @click="setFontSize('medium')"
         class="medium" data-value="medium">Medium</span>
-      <span @click="appState.settings.fontSize = 'large'"
+      <span @click="setFontSize('large')"
         class="large" data-value="large">Large</span>
     </p>
   </div>
@@ -27,12 +27,32 @@
 <script>
 import FilthSelector from '@/components/FilthSelector.vue';
 import appState from '@/appState.js';
+import { matomoCustomVariables, Filth, getEnumValueName } from '@/enums.js';
 
 export default {
   data() {
     return { appState };
   },
   components: { FilthSelector },
+  methods: {
+    setFontSize(size) {
+      if (size === appState.settings.fontSize) return;
+      appState.settings.fontSize = size;
+      this.$matomo.setCustomVariable(matomoCustomVariables.FONT_SIZE, 'font-size', size);
+    },
+    setDarkMode(value) {
+      if (value === appState.settings.nightMode) return;
+      appState.settings.nightMode = value;
+      this.$matomo.setCustomVariable(matomoCustomVariables.DARK_MODE, 'dark-mode', value);
+    },
+    setFilthAmount(value) {
+      if (value === appState.settings.filthAmount) return;
+      else appState.settings.filthAmount = value;
+
+      const name = getEnumValueName(Filth, value);
+      this.$matomo.setCustomVariable(matomoCustomVariables.FILTH_SELECT, 'filth-amount', name);
+    },
+  },
 };
 </script>
 

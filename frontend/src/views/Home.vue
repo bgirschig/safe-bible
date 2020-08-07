@@ -68,16 +68,18 @@
 
         <h1 id="howto">Let's go!</h1>
         <p class="center">
-          <a
+          <router-link
+            v-on:click.native="$window._paq.push(['trackEvent', 'cta', 'best-bits'])"
             class="cta btnLink accent"
-            href="/highlights">
+            to="/highlights">
             Read the best bits
-          </a>
-          <a
+          </router-link>
+          <router-link
+            v-on:click.native="$window._paq.push(['trackEvent', 'cta', 'from-start'])"
             class="cta btnLink"
-            href="/GEN/1">
+            to="/GEN/1">
             Read from the start
-          </a>
+          </router-link>
         </p>
       </div>
     </main>
@@ -92,8 +94,8 @@ export default {
   components: { Cover, Verse },
   methods: {
     handleCta(name = null) {
-      console.log('cta', name);
       document.querySelector('#main').scrollIntoView({ behavior: 'smooth' });
+      this.$matomo.trackEvent('cta', name);
     },
   },
 };
