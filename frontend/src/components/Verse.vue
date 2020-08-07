@@ -1,7 +1,13 @@
 <template>
   <span class="verse">
     <sup :key="verse.verseIdx" :id="verse['verseId']">
-      <a :href="verse.bibleHubLink" target="_blank" class="verseNumber">{{verse.verseIdx}}</a>
+      <a
+        aria-label="more info about this verse"
+        :href="verse.bibleHubLink"
+        target="_blank"
+        class="verseNumber">
+        {{verse.verseIdx}}
+      </a>
     </sup>&nbsp;<Sentence
       v-for="(sentence, sentenceIdx) in verse.sentences"
       :key="`${verse.verseIdx}-${sentenceIdx}`"

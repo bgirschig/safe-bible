@@ -4,6 +4,7 @@
 
     <p>
       <button
+        aria-label="toggle dark mode"
         @click="setDarkMode(!appState.settings.nightMode)"
         class="nightmodeToggle">
         Dark Mode

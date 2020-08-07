@@ -1,16 +1,28 @@
 <template>
   <div class="controlBar">
     <button
+      aria-label="toggle book browser"
       @click="$emit('toggleIndex')"
       :class="['imageBtn', {selected: appState.currentPanel === 'bookBrowser'}]">
       <BookIcon />
     </button>
     <div class="navigation">
-      <router-link v-visible="prev" :to="prev || ''"><ArrowLeft /></router-link>
+      <router-link
+        aria-label="go to previous page"
+        v-visible="prev"
+        :to="prev || ''">
+        <ArrowLeft />
+        </router-link>
       <span class="currentChapter">{{title}}</span>
-      <router-link v-visible="next" :to="next || ''"><ArrowRight /></router-link>
+      <router-link
+        aria-label="go to next page"
+        v-visible="next"
+        :to="next || ''">
+        <ArrowRight />
+        </router-link>
     </div>
     <button
+      aria-label="toggle settings panel"
       @click="$emit('toggleSettings')"
       :class="['imageBtn', {selected: appState.currentPanel === 'settings'}]">
       <SettingsIcon />

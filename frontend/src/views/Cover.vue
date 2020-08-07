@@ -12,7 +12,7 @@
       <div v-else class="crossWrapper">
         <Cross class="fitWidth"/>
         <div class="buttonWrapper">
-          <button @click="$emit('cta', 'cover')" class="scrollButton">
+          <button aria-label="start" @click="$emit('cta', 'cover')" class="scrollButton">
             <ArrowDown />
           </button>
         </div>

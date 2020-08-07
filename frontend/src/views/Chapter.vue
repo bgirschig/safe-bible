@@ -6,14 +6,20 @@
 
       <div class="chapterSelector">
         <div class="before">
-          <router-link v-for="idx in current-1" :key="idx"
+          <router-link
+            :aria-label="`go to chapter ${current-idx}`"
+            v-for="idx in current-1"
+            :key="idx"
             :to="`/${$route.params.bookId}/${current-idx}`">
             {{current-idx}}
           </router-link>
         </div>
         <h2 class="current">{{current}}</h2>
         <div class="next">
-          <router-link v-for="idx in nextChaptersCount" :key="idx"
+          <router-link
+            :aria-label="`go to chapter ${current + idx}`"
+            v-for="idx in nextChaptersCount"
+            :key="idx"
             :to="`/${$route.params.bookId}/${current + idx}`">
             {{current + idx}}
           </router-link>

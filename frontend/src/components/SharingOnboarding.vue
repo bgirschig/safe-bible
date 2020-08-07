@@ -12,7 +12,7 @@
         {{label.name}}
       </span>
     </p>
-    <button @click="$emit('cta')" class="accent">learn more</button>
+    <button aria-label="start" @click="$emit('cta')" class="accent">learn more</button>
   </div>
 </template>
 
