@@ -93,6 +93,7 @@ export default {
       const data = await response.json();
       appState.books = data.books;
       appState.highlights = data.highlights;
+      appState.labelMap = data.labelMap;
       this.updateAppState();
     },
     loadSettings() {

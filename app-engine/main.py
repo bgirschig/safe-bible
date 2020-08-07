@@ -62,6 +62,7 @@ def booksHandler():
   return jsonify({
     "books": data,
     "highlights": highlights,
+    "labelMap": labelMap,
   })
 
 @app.route("/chapter/<string:bookId>/<int:chapterIdx>")

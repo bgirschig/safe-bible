@@ -9,6 +9,7 @@ export default new Vue({
       bookId: null,
       currentSentence: null,
       currentPanel: null,
+      labelMap: null,
       settings: {
         filthAmount: Filth.KEEP_EVERYTHING,
         fontSize: 'medium',
