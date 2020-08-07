@@ -37,6 +37,7 @@ import appState from '@/appState.js';
 import InfoOverlay from '@/components/InfoOverlay.vue';
 import BookBrowser from '@/components/BookBrowser.vue';
 import SettingsEditor from '@/components/SettingsEditor.vue';
+import '@/css/common.css';
 import '@/css/text.css';
 import '@/css/transitions.css';
 

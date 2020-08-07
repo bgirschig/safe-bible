@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Cover @cta="scrollTo('#main')"/>
+    <Cover @cta="handleCta"/>
     <main id="main">
       <div class="text">
         <h1 id="foreword">Foreword</h1>
@@ -91,8 +91,9 @@ import Verse from '@/components/Verse.vue';
 export default {
   components: { Cover, Verse },
   methods: {
-    scrollTo(selector) {
-      document.querySelector(selector).scrollIntoView({ behavior: 'smooth' });
+    handleCta(name = null) {
+      console.log('cta', name);
+      document.querySelector('#main').scrollIntoView({ behavior: 'smooth' });
     },
   },
 };

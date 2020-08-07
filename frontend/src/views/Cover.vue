@@ -9,10 +9,11 @@
       </div>
     </div>
     <div class="crossZone">
-      <Cross />
+      <SharingOnboarding v-if="sharedVerseInfo" :verse="sharedVerseInfo" @cta="$emit('cta', 'share-onboarding')"/>
+      <Cross v-else />
     </div>
     <div class="buttonZone">
-      <button @click="$emit('cta')" class="scrollButton">
+      <button @click="$emit('cta', 'cover')" class="scrollButton">
         <ArrowDown />
       </button>
     </div>
@@ -22,9 +23,15 @@
 <script>
 import ArrowDown from '@/assets/icons/arrow_down.svg';
 import Cross from '@/assets/cover/cross.svg';
+import SharingOnboarding from '@/components/SharingOnboarding.vue';
 
 export default {
-  components: { ArrowDown, Cross },
+  components: { ArrowDown, Cross, SharingOnboarding },
+  data() {
+    return {
+      sharedVerseInfo: window.sharedVerseInfo,
+    };
+  },
 };
 </script>
 

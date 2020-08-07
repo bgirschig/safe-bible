@@ -15,6 +15,7 @@ app = Flask(__name__, static_folder="static", static_url_path='/')
 def home(err=None):
   return render_template("index.html",
     sharing=get_sharing_for_current_route(),
+    sharedVerse=json.dumps(getVerse(request.args.get('verse'))),
   )
 
 def get_sharing_for_current_route():
@@ -34,15 +35,16 @@ def get_sharing_for_current_route():
   else:
     address = parsePath(request.path)
     if (address["bookId"] and address["bookId"] in books and len(books[address["bookId"]]["chapters"]) > 0 ):
-      sharing["image"] = f"{baseUrl}/shareImage/{address['bookId']}/{address['chapterIdx']}"
-      sharing["url"] = f"{baseUrl}?chapter={address['bookId']}/{address['chapterIdx']}"
+      sharing["image"] = f"{baseUrl}/shareImage/{address['bookId']}/{address['chapterIdx']+1}"
+      sharing["url"] = f"{baseUrl}?chapter={address['bookId']}/{address['chapterIdx']+1}"
   return sharing
 
 def parsePath(path):
-  parts = path.split("/")
+  parts = path.strip("/").split("/")
   return {
-    "bookId": parts[1] or None,
-    "chapterIdx": parts[2] if len(parts)>2 else 1,
+    "bookId": parts[0] or None,
+    "chapterIdx": int(parts[1])-1 if len(parts)>1 else 0,
+    "verseIdx": int(parts[2])-1 if len(parts)>2 else None,
   }
 
 # Todo: do this once and put it in memory
@@ -74,6 +76,28 @@ def chapterHandler(bookId, chapterIdx):
     return jsonify({"error": 'CHAPTER_NOT_FOUND'}), 404
   
   return jsonify(books[bookId]["chapters"][chapterIdx])
+
+def getVerse(verseId):
+  if not verseId: return None
+
+  address = parsePath(verseId)
+  bookId = address['bookId']
+  chapterIdx = address['chapterIdx']
+  verseIdx = address['verseIdx']
+
+  if not bookId or bookId not in books:
+    return jsonify({"error": 'BOOK_NOT_FOUND'}), 404
+  if chapterIdx < 0 or chapterIdx >= len(books[bookId]["chapters"]):
+    return jsonify({"error": 'CHAPTER_NOT_FOUND'}), 404
+  if verseIdx < 0 or verseIdx >= len(books[bookId]["chapters"][chapterIdx]):
+    return jsonify({"error": 'CHAPTER_NOT_FOUND'}), 404
+
+  verse = dict(books[bookId]["chapters"][chapterIdx][verseIdx])
+  verse["title"] = f"{books[bookId]['short']} {chapterIdx+1}:{verseIdx+1}"
+  verse["labels"] = list(get_verse_labels(verse))
+  verse["text"] = get_verse_text(verse)
+
+  return verse
 
 @app.route('/shareImage/<bookId>/<int:chapter>/<int:verse>')
 def getVerseImage(bookId, chapter, verse):

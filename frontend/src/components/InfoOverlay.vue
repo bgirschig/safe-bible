@@ -7,11 +7,11 @@
       <header>
         <span>This verse was hidden because it&nbsp;contains</span>
       </header>
-      <div
+      <span
         v-for="label in target.labels"
         :key="label.id"
         class="score-display"
-        :style="{ backgroundColor: label.color }">{{label.name}}</div>
+        :style="{ backgroundColor: label.color }">{{label.name}}</span>
 
       <p class="sharing">
         <ShareButton platformName="email"
@@ -149,15 +149,6 @@ export default {
 .infoOverlay h2 {
   font-weight: normal;
   text-align: left;
-}
-.score-display {
-  padding: 7px 9px;
-  color: white;
-  border-radius: 100px;
-  display: inline-block;
-  padding: 4px 14px;
-  font-size: 0.8em;
-  margin: 5px 5px 0 0;
 }
 .overlayBackground {
   position: fixed;
