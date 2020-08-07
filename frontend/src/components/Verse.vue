@@ -4,6 +4,7 @@
       <a
         aria-label="more info about this verse"
         :href="verse.bibleHubLink"
+        rel="noopener"
         target="_blank"
         class="verseNumber">
         {{verse.verseIdx}}

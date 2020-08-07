@@ -12,7 +12,8 @@
     "core-js": "^3.6.5",
     "vue": "^2.6.11",
     "vue-matomo": "^3.13.5-0",
-    "vue-router": "^3.2.0"
+    "vue-router": "^3.2.0",
+    "webfontloader": "^1.6.28"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.4.0",

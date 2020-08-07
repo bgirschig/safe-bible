@@ -1,0 +1,7 @@
+# placeholder for later (possibly necessary) disallows
+User-agent: Unnecessarybot
+Disallow: /
+
+User-agent: *
+Crawl-delay: 120
+Allow: /

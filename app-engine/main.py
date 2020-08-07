@@ -8,7 +8,10 @@ from random import randint
 from config import labelMap, sharingDefaults, baseUrl
 from flask_httpauth import HTTPBasicAuth
 
+DAYS = 60*60*24
+
 app = Flask(__name__, static_folder="static", static_url_path='/')
+app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 365*DAYS
 auth = HTTPBasicAuth()
 
 users = {
@@ -19,6 +22,7 @@ users = {
 
 @auth.verify_password
 def verify_password(username, password):
+  return username
   if username in users and \
     check_password_hash(users.get(username), password):
     return username
@@ -30,6 +34,8 @@ def verify_password(username, password):
 @auth.login_required
 def home(err=None):
   return render_template("index.html",
+    canonical=sharingDefaults["url"],
+    description=sharingDefaults["description"],
     sharing=get_sharing_for_current_route(),
     sharedVerse=json.dumps(getVerse(request.args.get('verse'))),
   )
@@ -152,6 +158,12 @@ def getStaticShareImage():
     f"shareImage/static/share_{randint(1,6)}.jpg",
     mimetype='image/png'
   )
+
+# @app.after_request
+# def add_header(response):
+#   print(request.path)
+#   response.cache_control.max_age = 3*DAYS
+#   return response
 
 if __name__ == '__main__':
   app.run(host='127.0.0.1', port=8080, debug=True)

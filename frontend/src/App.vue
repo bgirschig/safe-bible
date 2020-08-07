@@ -32,6 +32,8 @@
 </template>
 
 <script>
+import WebFont from 'webfontloader';
+
 import { matomoCustomVariables, Filth, getEnumValueName } from '@/enums.js';
 import Controlbar from '@/components/Controlbar.vue';
 import appState from '@/appState.js';
@@ -57,6 +59,7 @@ export default {
     },
   },
   async mounted() {
+    this.loadFonts();
     this.loadSettings();
     this.loadBooks();
   },
@@ -106,6 +109,13 @@ export default {
       appState.highlights = data.highlights;
       appState.labelMap = data.labelMap;
       this.updateAppState();
+    },
+    loadFonts() {
+      WebFont.load({
+        google: {
+          families: ['Roboto:wght@400;700&display=swap', 'Source+Serif+Pro&display=swap'],
+        },
+      });
     },
     loadSettings() {
       try {
