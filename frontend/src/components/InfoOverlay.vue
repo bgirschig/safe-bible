@@ -33,7 +33,7 @@
           <redditIcon />
         </ShareButton>
         <ShareButton platformName="twitter"
-          :url="`https://twitter.com/intent/tweet?url=${shareUrl}&text=${shareText}`">
+          :url="`https://twitter.com/intent/tweet?url=${shareUrl}&text=${shareText}&hashtags=${hashtags.join(',')}&via=ImprovedArt`">
           <twitterIcon />
         </ShareButton>
       </p>
@@ -42,6 +42,7 @@
 </template>
 
 <script>
+import appState from '@/appState';
 import ShareButton from '@/components/ShareButton.vue';
 import emailIcon from '@/assets/icons/social/email.svg';
 import facebookIcon from '@/assets/icons/social/facebook.svg';
@@ -61,12 +62,22 @@ export default {
   data() {
     return {
       shareTitle: '',
-      shareText: '#safeBible #artImproved',
+      hashtags: ['safeBible', 'ArtImproved'],
     };
   },
   computed: {
     shareUrl() {
       return encodeURIComponent(`https://${window.location.host}/?verse=${this.target.verseId}`);
+    },
+    shareText() {
+      let [bookId, chapterIdx, verseIdx] = this.target.verseId.split('/');
+      chapterIdx = parseInt(chapterIdx, 10) - 1;
+      verseIdx = parseInt(verseIdx, 10) - 1;
+      const book = appState.bookMap[bookId];
+      if (!book) return '';
+
+      const verseTitle = `${book.short} ${chapterIdx + 1}:${verseIdx + 1}`;
+      return `I was saved from reading ${verseTitle} thanks to ArtImproved`;
     },
   },
   props: {
