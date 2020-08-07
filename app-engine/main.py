@@ -34,7 +34,7 @@ def get_sharing_for_current_route():
   else:
     address = parsePath(request.path)
     if (address["bookId"] and address["bookId"] in books and len(books[address["bookId"]]["chapters"]) > 0 ):
-      sharing["image"] = f"{baseUrl}/shareImage/{address['bookId']}"
+      sharing["image"] = f"{baseUrl}/shareImage/{address['bookId']}/{address['chapterIdx']}"
       sharing["url"] = f"{baseUrl}?chapter={address['bookId']}/{address['chapterIdx']}"
   return sharing
 
