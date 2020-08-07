@@ -1,6 +1,6 @@
 import json
 import csv
-from config import SCORE_TYPES, CENSOR_TRESHOLD, score_labels, color_map
+from config import CENSOR_TRESHOLD, labelMap
 
 books = {}
 highlights = {}
@@ -39,7 +39,7 @@ def init():
       
       chapters = books[bookId]["chapters"]
       while (chapter >= len(chapters) ): chapters.append([])
-      labels = [key for key in SCORE_TYPES if float(row[key]) > CENSOR_TRESHOLD]
+      labels = [key for key in labelMap if float(row[key]) > CENSOR_TRESHOLD]
       sentence = {
         "text": row["text"],
         "labels": labels,
@@ -119,31 +119,16 @@ def get_page_title(bookId:str, chapter:int, verseIdx:int=None):
 def get_verse_text(verse):
   return "".join([sentence["text"] for sentence in verse["sentences"]])
 
-def get_verse_scores(verse):
-  scores = []
+def get_verse_labels(verse):
+  labels = set()
   for sentence in verse["sentences"]:
-    for idx, score in enumerate(sentence["scores"]):
-      if (idx >= len(scores)): scores.append(score)
-      elif score > scores[idx]: scores[idx] = score
-  return scores
+    labels.update(sentence["labels"])
+  return labels
 
-def get_chapter_scores(chapter):
-  chapter_scores = []
-  for verse in chapter:
-    verse_scores = get_verse_scores(verse)
-    for idx, score in enumerate(verse_scores):
-      if (idx >= len(chapter_scores)): chapter_scores.append(score)
-      elif score > chapter_scores[idx]: chapter_scores[idx] = score
-  return chapter_scores
-
-def get_labels(scores):
-  labels=[]
-  for idx, value in enumerate(scores):
-    if (value < CENSOR_TRESHOLD): continue
-    labels.append({"score": value, "name": score_labels[idx], "color": color_map[idx]})
-
-  # Sort labels by value
-  labels.sort(key = lambda item: item['score'], reverse=True)
+def get_chapter_labels(chapter):
+  labels = set()
+  for verse in chapter:    
+    labels.update(get_verse_labels(verse))
   return labels
 
 init()

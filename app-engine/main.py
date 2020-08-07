@@ -1,6 +1,10 @@
-from flask import Flask, render_template, jsonify, request
-from book_tools import books, ordered_books, highlights
+from flask import Flask, render_template, jsonify, request, send_file
+from book_tools import books, ordered_books, highlights, get_verse_text, get_verse_labels, get_chapter_labels
 import json
+import shareImage
+import itertools
+from random import randint
+from config import labelMap
 
 app = Flask(__name__, static_folder="static", static_url_path='/')
 
@@ -42,7 +46,29 @@ def chapterHandler(bookId, chapterIdx):
   
   return jsonify(books[bookId]["chapters"][chapterIdx])
 
+@app.route('/shareImage/<bookId>/<int:chapter>/<int:verse>')
+def getVerseImage(bookId, chapter, verse):
+  verseData = books[bookId]["chapters"][chapter-1][verse-1]
 
+  labels = [labelMap[key] for key in get_verse_labels(verseData)]
+  text = get_verse_text(verseData)
+  bookName = books[bookId]["short"]
+
+  img = None
+  if (labels):
+    img = shareImage.makeVerseImage(text, f"{bookName} {chapter}:{verse}", labels)
+  else:
+    img = f"shareImage/static/share_{randint(1,6)}.jpg"
+
+  return send_file(img, mimetype='image/png')
+
+@app.route('/shareImage/<bookId>/<int:chapter>')
+def getChapterImage(bookId, chapter=1):
+  chapterData = books[bookId]["chapters"][chapter-1]
+  labels = [labelMap[key] for key in get_chapter_labels(chapterData)]
+  title = books[bookId]["multiline"] if "multiline" in books[bookId] else books[bookId]["full"]
+  img = shareImage.makeChapterImage(title, labels, chapter)
+  return send_file(img, mimetype='image/png'), 200
 
 if __name__ == '__main__':
   app.run(host='127.0.0.1', port=8080, debug=True)
