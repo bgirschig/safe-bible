@@ -88,6 +88,15 @@ export default {
     },
     updateAppState() {
       appState.bookId = this.$route.params.bookId;
+      if (this.$route.name === 'Chapter') {
+        document.title = `safe bible | ${appState.bookInfo.short} ${this.$route.params.chapterIdx || 1}`;
+      } else if (this.$route.name) {
+        document.title = `safe bible | ${this.$route.name}`;
+      } else {
+        document.title = 'safe bible';
+      }
+      // eslint-disable-next-line no-underscore-dangle
+      window._paq.push(['setDocumentTitle', document.title]);
     },
     async loadBooks() {
       const response = await fetch('/books');
