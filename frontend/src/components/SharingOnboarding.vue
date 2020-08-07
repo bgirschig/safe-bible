@@ -34,9 +34,6 @@ export default {
 
 <style scoped>
 #sharingTarget {
-  position: absolute;
-  top: 50%; left: 50%;
-  transform: translate(-50%, -50%);
   color: rgb(var(--fontColor));
   background-color: var(--bgColor);
   padding: 20px;
@@ -45,5 +42,6 @@ export default {
   box-sizing: border-box;
   max-width: calc(100% - 20px);
   width: 450px;
+  margin: auto;
 }
 </style>

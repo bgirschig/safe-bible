@@ -11,6 +11,7 @@
 
   background-color: var(--bgColor);
   padding-bottom: 3em;
+  min-height: calc(100vh - 63px);
 }
 .text, .textFont {
   font-family: 'Source Serif Pro', serif;

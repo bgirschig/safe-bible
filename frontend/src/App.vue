@@ -163,7 +163,7 @@ a {
 main {
   min-height: 100vh;
   box-sizing: border-box;
-  padding-bottom: 68px;
+  padding-bottom: 63px;
 }
 
 button, .btnLink {

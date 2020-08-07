@@ -1,21 +1,22 @@
 <template>
   <div id="cover" class="cover">
-    <div class="titleZone">
-      <div class="title">
-        <div class="big">THE</div>
-        <div class="small highlight">safe</div><br>
-        <div class="big" style="left: 26px;">HOLY</div><br>
-        <div class="big" style="left: -8px;">BIBLE</div>
+    <div class="topHalf">
+      <Logo class="logo"/>
+    </div>
+    <div class="bottomHalf">
+      <SharingOnboarding
+        class="fitWidth"
+        v-if="sharedVerseInfo"
+        :verse="sharedVerseInfo"
+        @cta="$emit('cta', 'share-onboarding')"/>
+      <div v-else class="crossWrapper">
+        <Cross class="fitWidth"/>
+        <div class="buttonWrapper">
+          <button @click="$emit('cta', 'cover')" class="scrollButton">
+            <ArrowDown />
+          </button>
+        </div>
       </div>
-    </div>
-    <div class="crossZone">
-      <SharingOnboarding v-if="sharedVerseInfo" :verse="sharedVerseInfo" @cta="$emit('cta', 'share-onboarding')"/>
-      <Cross v-else />
-    </div>
-    <div class="buttonZone">
-      <button @click="$emit('cta', 'cover')" class="scrollButton">
-        <ArrowDown />
-      </button>
     </div>
   </div>
 </template>
@@ -23,10 +24,16 @@
 <script>
 import ArrowDown from '@/assets/icons/arrow_down.svg';
 import Cross from '@/assets/cover/cross.svg';
+import Logo from '@/assets/logo.svg';
 import SharingOnboarding from '@/components/SharingOnboarding.vue';
 
 export default {
-  components: { ArrowDown, Cross, SharingOnboarding },
+  components: {
+    ArrowDown,
+    Cross,
+    SharingOnboarding,
+    Logo,
+  },
   data() {
     return {
       sharedVerseInfo: window.sharedVerseInfo,
@@ -38,7 +45,6 @@ export default {
 <style scoped>
 .cover {
   background-color: var(--accentColor);
-  color: #DEA000;
   width: 100%;
   height: 100vh;
   z-index: 3;
@@ -48,86 +54,58 @@ export default {
   background-position: center;
   background-size: cover;
   background-attachment: fixed;
-}
-.title {
-  line-height: 2.5rem;
-  position: relative;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-weight: bold;
-}
-.title div {
-  position: relative;
-  display: inline-block;
-  top: 8px;
-}
-.title .big {
-  font-size: 64px;
-}
-.title .small {
-  font-size: 24px;
-}
-.title .highlight {
-  line-height: normal;
-  color: var(--accentColor);
-  background-color: #DEA000;
-  padding: 2px 6px;
-  top: unset;
-  left: 5px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: stretch;
+  align-items: stretch;
 }
 
-.cross {
+.cover>div {
+  flex-grow: 1;
+  flex-shrink: 1;
   position: relative;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 50vw;
-  height: 70vw;
-}
-.cross div {
-  background-color: #DEA000;
-  position: absolute;
-}
-.cross .horizontal {
-  transform: translate(0, -50%);
-  top: 25%;
-  width: 100%;
-  height: 2vw;
-}
-.cross .vertical {
-  left: 50%;
-  transform: translate(-50%, 0);
-  width: 2vw;
-  height: 100%;
-}
-
-.titleZone {
-  height: 40vh;
+  flex-basis: 100%;
+  box-sizing: border-box;
   text-align: center;
 }
-.crossZone {
-  height: 40vh;
-  text-align: center;
+.bottomHalf {
+  padding: 10px 10px 70px 10px;
 }
-.crossZone svg {
-  width: 100%;
+.topHalf {
+  padding: 30px 0 30px 0;
+  max-height: 40vh;
+}
+.lower {
+  padding: 20px 0 70px 0;
+}
+.logo {
   height: 100%;
+max-width: 100%;
+}
+.logo path {
+  fill: white;
 }
 
-.buttonZone {
-  height: 20vh;
-  position: relative;
+.crossWrapper {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: stretch;
+  align-items: stretch;
+  max-height: 550px;
 }
+.crossWrapper svg {
+  height: 100%;
+  max-width: 100%;
+  margin: auto;
+}
+
 .scrollButton {
-  position: absolute;
   padding: 6px 6px 6px 6px;
   background-color: rgba(0, 0, 0, 0.5);
   border-radius: 100%;
   color: white;
-  left: 50%;
-  top: 10%;
-  transform: translate(-50%, -50%);
   font-size: 0;
 }
 
