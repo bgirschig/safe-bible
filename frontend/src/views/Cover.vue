@@ -12,9 +12,9 @@
       <Cross />
     </div>
     <div class="buttonZone">
-      <a href="#main" class="scrollButton">
+      <button @click="$emit('cta')" class="scrollButton">
         <ArrowDown />
-      </a>
+      </button>
     </div>
   </div>
 </template>

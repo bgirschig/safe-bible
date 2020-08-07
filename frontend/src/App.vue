@@ -121,9 +121,6 @@ html {
   /** Always show the scrollbar, to avoid changing viewport width */
   overflow-y: scroll;
 }
-html.smooth {
-  scroll-behavior: smooth;
-}
 body {
   margin: 0;
 }
@@ -139,8 +136,6 @@ body {
   --accentColor: #297176;
 
   color: RGB(var(--fontColor));
-  scroll-behavior: smooth;
-
   background-color: rgb(240, 240, 240);
 }
 
