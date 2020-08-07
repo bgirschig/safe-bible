@@ -1,5 +1,5 @@
 from flask import Flask, render_template, jsonify, request, send_file
-from book_tools import books, ordered_books, highlights, get_verse_text, get_verse_labels, get_chapter_labels
+from book_tools import books, ordered_books, highlights, get_verse_text, get_verse_labels, get_chapter_labels, books_summary
 from werkzeug.security import generate_password_hash, check_password_hash
 import json
 import shareImage
@@ -34,7 +34,6 @@ def verify_password(username, password):
 @auth.login_required
 def home(err=None):
   return render_template("index.html",
-    canonical=sharingDefaults["url"],
     description=sharingDefaults["description"],
     sharing=get_sharing_for_current_route(),
     sharedVerse=json.dumps(getVerse(request.args.get('verse'))),
@@ -69,23 +68,12 @@ def parsePath(path):
     "verseIdx": int(parts[2])-1 if len(parts)>2 else None,
   }
 
-# Todo: do this once and put it in memory
 @app.route("/books/")
 @app.route("/books")
 def booksHandler():
-  bookCount = len(ordered_books)
-  data = [{
-    "id": book["id"],
-    "prev": ordered_books[bookIdx-1]["id"] if bookIdx > 0 else None,
-    "next": ordered_books[bookIdx+1]["id"] if bookIdx < bookCount-1 else None,
-    "bibleHubId": book["bibleHubId"],
-    "short": book["short"],
-    "full": book["full"],
-    "group": book["group"],
-    "chapterCount": len(book["chapters"])
-  } for bookIdx, book in enumerate(ordered_books)]
+  print(books_summary)
   return jsonify({
-    "books": data,
+    "books": books_summary,
     "highlights": highlights,
     "labelMap": labelMap,
   })

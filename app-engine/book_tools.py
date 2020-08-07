@@ -4,6 +4,7 @@ from config import CENSOR_TRESHOLD, labelMap
 
 books = {}
 highlights = {}
+books_summary = []
 
 # load book titles
 with open("./data/books.json") as f:
@@ -54,6 +55,21 @@ def init():
           "sentences": []
         })
       chapters[chapter][verseIdx]["sentences"].append(sentence)
+
+  # create a 'book map'
+  global books_summary
+  bookCount = len(ordered_books)
+  books_summary = [{
+    "id": book["id"],
+    "prev": ordered_books[bookIdx-1]["id"] if bookIdx > 0 else None,
+    "next": ordered_books[bookIdx+1]["id"] if bookIdx < bookCount-1 else None,
+    "bibleHubId": book["bibleHubId"],
+    "short": book["short"],
+    "full": book["full"],
+    "group": book["group"],
+    "chapterCount": len(book["chapters"])
+  } for bookIdx, book in enumerate(ordered_books)]
+  print(books_summary)
 
   # load highlights
   with open("./data/highlights.json") as f:

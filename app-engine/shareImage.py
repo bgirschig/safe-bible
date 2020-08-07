@@ -5,9 +5,6 @@ from io import BytesIO
 import math
 import config
 
-# TODO:
-# - caching
-
 templatesDir = os.path.join("shareImage", "templates")
 fontsDir = os.path.join("shareImage", "fonts")
 
