@@ -4,7 +4,7 @@ import json
 import shareImage
 import itertools
 from random import randint
-from config import labelMap
+from config import labelMap, sharingDefaults, baseUrl
 
 app = Flask(__name__, static_folder="static", static_url_path='/')
 
@@ -14,8 +14,36 @@ app = Flask(__name__, static_folder="static", static_url_path='/')
 @app.route("/")
 def home(err=None):
   return render_template("index.html",
-    sharing="plb",
+    sharing=get_sharing_for_current_route(),
   )
+
+def get_sharing_for_current_route():
+  sharing = dict(sharingDefaults)
+
+  sharing["url"] = f"{baseUrl}"
+  sharing["image"] = f"{baseUrl}/shareImage"
+
+  verseId = request.args.get("verse")
+  chapterId = request.args.get("chapter")
+  if verseId:
+    sharing["image"] = f"{baseUrl}/shareImage/{verseId}"
+    sharing["url"] = f"{baseUrl}?verse={verseId}"
+  elif chapterId:
+    sharing["image"] = f"{baseUrl}/shareImage/{chapterId}"
+    sharing["url"] = f"{baseUrl}?verse={chapterId}"
+  else:
+    address = parsePath(request.path)
+    if (address["bookId"] and address["bookId"] in books and len(books[address["bookId"]]["chapters"]) > 0 ):
+      sharing["image"] = f"{baseUrl}/shareImage/{address['bookId']}"
+      sharing["url"] = f"{baseUrl}?chapter={address['bookId']}/{address['chapterIdx']}"
+  return sharing
+
+def parsePath(path):
+  parts = path.split("/")
+  return {
+    "bookId": parts[1] or None,
+    "chapterIdx": parts[2] if len(parts)>2 else 1,
+  }
 
 # Todo: do this once and put it in memory
 @app.route("/books")
@@ -62,6 +90,7 @@ def getVerseImage(bookId, chapter, verse):
 
   return send_file(img, mimetype='image/png')
 
+@app.route('/shareImage/<bookId>')
 @app.route('/shareImage/<bookId>/<int:chapter>')
 def getChapterImage(bookId, chapter=1):
   chapterData = books[bookId]["chapters"][chapter-1]
@@ -69,6 +98,13 @@ def getChapterImage(bookId, chapter=1):
   title = books[bookId]["multiline"] if "multiline" in books[bookId] else books[bookId]["full"]
   img = shareImage.makeChapterImage(title, labels, chapter)
   return send_file(img, mimetype='image/png'), 200
+
+@app.route('/shareImage')
+def getStaticShareImage():
+  return send_file(
+    f"shareImage/static/share_{randint(1,6)}.jpg",
+    mimetype='image/png'
+  )
 
 if __name__ == '__main__':
   app.run(host='127.0.0.1', port=8080, debug=True)

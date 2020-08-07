@@ -14,5 +14,14 @@ labelMap = {
 for key in labelMap:
   labelMap[key]["id"] = key
 
+baseUrl = "https://bible.artimproved.com"
+baseUrl = "http://127.0.0.1:8080"
+sharingDefaults = {
+  "title": "The [safe] Holy Bible",
+  "description": "Read the bible without the difficult parts, thanks to AI",
+  "url": baseUrl,
+  "image": f"{baseUrl}/assets/static_share/share_1.jpg",
+}
+
 # Any sentence with one of its scores >CENSOR_TRESHOLD will be censored
 CENSOR_TRESHOLD = 0.7695
