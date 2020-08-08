@@ -10,6 +10,7 @@ export default {
     url: { type: String },
     platformName: { type: String },
     popupSize: { type: Array, default: () => [520, 400] },
+    sharedInfo: { type: String },
   },
   methods: {
     open() {
@@ -17,7 +18,7 @@ export default {
       const left = Math.floor((window.innerWidth - width) * 0.5);
       const top = Math.floor((window.innerHeight - height) * 0.5);
       window.open(this.url, '', `top=${top},left=${left},width=${width},height=${height},menubar=no,scrollbars=no,statusbar=no'`);
-      this.$matomo.trackEvent('shareVerse', this.platformName);
+      this.$matomo.trackEvent('shareVerse', this.platformName, this.sharedInfo);
     },
   },
 };

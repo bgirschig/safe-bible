@@ -15,24 +15,29 @@
 
       <p class="sharing">
         <ShareButton platformName="email"
+          :sharedInfo=target.verseId
           :url="`mailto:?subject=${shareTitle}&body=${shareText}%0D%0A${shareUrl}`">
           <emailIcon />
         </ShareButton>
         <ShareButton platformName="facebook"
+          :sharedInfo=target.verseId
           :url="`https://www.facebook.com/sharer.php?u=${shareUrl}`">
           <facebookIcon />
         </ShareButton>
         <ShareButton platformName="pinterest"
+          :sharedInfo=target.verseId
           :url="`https://pinterest.com/pin/create/bookmarklet?url=${shareUrl}&description=${shareText}`"
           :popupSize="[660, 400]">
           <pinterestIcon />
         </ShareButton>
         <ShareButton platformName="reddit"
+          :sharedInfo=target.verseId
           :url="`http://www.reddit.com/submit?url=${shareUrl}&title=${shareText}`"
           :popupSize="[660, 400]">
           <redditIcon />
         </ShareButton>
         <ShareButton platformName="twitter"
+          :sharedInfo=target.verseId
           :url="`https://twitter.com/intent/tweet?url=${shareUrl}&text=${shareText}&hashtags=${hashtags.join(',')}&via=ImprovedArt`">
           <twitterIcon />
         </ShareButton>
