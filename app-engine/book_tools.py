@@ -71,6 +71,7 @@ def init():
   } for bookIdx, book in enumerate(ordered_books)]
 
   # load highlights
+  global highlights
   with open("./data/highlights.json") as f:
     highlight_addresses = json.load(f)
     for address in highlight_addresses:
@@ -84,6 +85,8 @@ def init():
         highlights[bookId]["chapters"][chapterIdx] = []
       highlights[bookId]["chapters"][chapterIdx].append(books[bookId]["chapters"][chapterIdx-1][verse-1])
 
+  highlights = [highlights[book["id"]] for book in ordered_books if book["id"] in highlights]
+    
 def get_nav_links(bookId:str, chapter:int):
   """ Returns tuple with prev and next page links for a given page ID (bookId+chapterId)"""
 
