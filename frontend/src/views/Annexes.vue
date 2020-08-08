@@ -3,16 +3,8 @@
     <div class="text">
       <h1>Safe Bible Annexes</h1>
 
-      <h2 id="contact">Contact</h2>
-      <p class="center">
-        If you have a question or a comment, feel free to send an email<br>
-        I'll do my best to answer them.
-      </p>
-      <p class="center">
-        <a href="mailto:bible@artimproved.com">bible@artimproved.com</a>
-      </p>
-
-      <h2 id="translation">A note on translation</h2>
+      <h2 id="translation" :class="{anchorTarget: $route.hash==='#translation'}">
+        A note on translation</h2>
       <div class="columns">
         <p>
           While very powerful, the current tools don’t work very well with ancient hebrew, so a
@@ -31,7 +23,7 @@
         </p>
       </div>
 
-      <h2 id="technical-details">Technical details</h2>
+      <h2 id="details" :class="{anchorTarget: $route.hash==='#details'}">Technical details</h2>
       <div class="columns">
         <p>
           Every sencence in the book was sent to <a href="http://www.perspectiveapi.com">Perspective
@@ -44,7 +36,8 @@
         </p>
         <p>
           Perspective API started at Google's <a href="https://jigsaw.google.com/">jigsaw</a> (a
-          team dedicated to research and technology to keep our world safer), but has now been open sourced.
+          team dedicated to research and technology to keep our world safer), but has now been open
+          sourced.
         </p>
         <p>
           The frontend was created using <a href="https://vuejs.org/">VueJS</a> and is hosted
@@ -56,6 +49,26 @@
           make sure everything is working as expected.
         </p>
       </div>
+
+      <h2 id="contact" :class="{anchorTarget: $route.hash==='#contact'}">Contact</h2>
+      <p class="center">
+        If you have a question or a comment, feel free to send an email<br>
+        I'll do my best to answer them.
+      </p>
+      <p class="center">
+        <a href="mailto:bible@artimproved.com">bible@artimproved.com</a>
+      </p>
     </div>
   </main>
 </template>
+
+<style scoped>
+/* :target does not work with vue-router */
+.anchorTarget {
+  color: var(--accentColor);
+  font-weight: bold;
+}
+.anchorTarget::before {
+  content: '→ ';
+}
+</style>

@@ -3,13 +3,12 @@
     <h1>The <span class="highlight">safe</span> Holy Bible</h1>
     <h2>Annexes</h2>
     <div class="columns">
-      <router-link
-        v-for="book in annexes"
-        :key="book.id"
-        class="bookLink"
-        :to="`/${book.id}`">
-        {{ book.short }}
-      </router-link>
+      <!-- This is done manually because it doesn't integrate well with 'regular' books -->
+      <router-link class="bookLink" :to="`/home`">Home</router-link>
+      <router-link class="bookLink" :to="`/highlights`">Highlights</router-link>
+      <router-link class="bookLink" :to="`/annexes#translation`">A note on translation</router-link>
+      <router-link class="bookLink" :to="`/annexes#details`">Technical details</router-link>
+      <router-link class="bookLink" :to="`/annexes#contact`">Contact</router-link>
     </div>
 
     <h2>Old testament</h2>

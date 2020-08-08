@@ -491,5 +491,12 @@
     "short": "Revelation",
     "full": "The Revelation to John",
     "group": "new-testament"
+  },
+  {
+    "id": "annexes",
+    "bibleHubId": null,
+    "short": "Annexes",
+    "full": "Annexes",
+    "group": "annexes"
   }
 ]
