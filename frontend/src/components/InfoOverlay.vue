@@ -10,7 +10,7 @@
       <span
         v-for="label in target.labels"
         :key="label.id"
-        class="score-display"
+        :class="['score-display', { 'label-border': label.id === 'IDENTITY_ATTACK' }]"
         :style="{ backgroundColor: label.color }">{{label.name}}</span>
 
       <p class="sharing">
