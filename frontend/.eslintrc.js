@@ -16,9 +16,9 @@ module.exports = {
     'no-else-return': 'off',
     'prefer-destructuring': 'off',
     'import/prefer-default-export': 'off',
-    "prefer-const": ["error", {
-      "destructuring": "all",
+    'prefer-const': ['error', {
+      destructuring: 'all',
     }],
-    "no-underscore-dangle": 'off',
+    'no-underscore-dangle': 'off',
   },
 };

@@ -105,14 +105,14 @@ export default {
         const targetBounds = targetSencence.getClientRects();
         let highestBounds = targetBounds[0];
         let highestBoundsTop = Number.POSITIVE_INFINITY;
-        targetBounds.forEach(bounds => {
-          const top = bounds.y - bounds.height;
+        targetBounds.forEach((bounds) => {
+          top = bounds.y - bounds.height;
           if (top < highestBoundsTop) {
             highestBoundsTop = top;
             highestBounds = bounds;
           }
         });
-        top = (targetSencence.offsetTop-targetBounds[0].y) + highestBounds.y - 5;
+        top = (targetSencence.offsetTop - targetBounds[0].y) + highestBounds.y - 5;
         left = Math.min(highestBounds.x, window.innerWidth - overlayWidth - 25);
       } catch (e) {
         console.log(e);
@@ -120,7 +120,7 @@ export default {
         if (window.innerWidth > overlayWidth + 25) {
           left = Math.min(targetSencence.offsetLeft, window.innerWidth - overlayWidth - 25);
         } else {
-          left = (window.innerWidth - overlayWidth) / 2
+          left = (window.innerWidth - overlayWidth) / 2;
         }
       }
 
