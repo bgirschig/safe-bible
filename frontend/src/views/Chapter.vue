@@ -94,7 +94,14 @@ export default {
     },
   },
   async created() {
-    const response = await fetch(`/chapter/${this.$route.params.bookId}/${this.$route.params.chapterIdx}`);
+    let response;
+    try {
+      response = await fetch(`/chapter/${this.$route.params.bookId}/${this.$route.params.chapterIdx}`);
+    } catch (e) {
+      console.error(e);
+      this.error = 'Sorry, an unexpected error happened. Please try again';
+      return;
+    }
     const data = await response.json();
     if (response.ok) {
       this.rawVerses = data;
