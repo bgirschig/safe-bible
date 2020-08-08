@@ -13,7 +13,7 @@ for item in os.listdir(templatesDir):
   backgrounds.append(Image.open(os.path.join(templatesDir, item)))
 font_address = ImageFont.truetype(os.path.join(fontsDir, "Roboto-Light.ttf"), size=50)
 font_regular = ImageFont.truetype(os.path.join(fontsDir, "Roboto-Light.ttf"), size=35)
-font_labels = ImageFont.truetype(os.path.join(fontsDir, "Roboto-Light.ttf"), size=30)
+font_labels = ImageFont.truetype(os.path.join(fontsDir, "Roboto-Regular.ttf"), size=30)
 
 def makeChapterImage(title, labels, chapter=1):
   img = choice(backgrounds).copy()
