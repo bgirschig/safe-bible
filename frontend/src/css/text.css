@@ -67,6 +67,10 @@ h2 {
   break-inside: avoid;
 }
 
+p:first-child {
+  margin-top: 0;
+}
+
 @media (min-width: 660px) {
   .pageHeight {
     padding-top: 50px;
