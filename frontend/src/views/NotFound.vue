@@ -13,7 +13,7 @@
         </button>
       </p>
     </div>
-  </main>  
+  </main>
 </template>
 
 <script>
@@ -23,7 +23,7 @@ export default {
   data() {
     return { appState };
   },
-}
+};
 </script>
 
 <style scoped>
