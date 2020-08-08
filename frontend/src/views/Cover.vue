@@ -68,6 +68,7 @@ export default {
   flex-basis: 100%;
   box-sizing: border-box;
   text-align: center;
+  height: 50vh;
 }
 .bottomHalf {
   padding: 10px 10px 0 10px;
