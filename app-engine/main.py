@@ -71,7 +71,6 @@ def parsePath(path):
 @app.route("/books/")
 @app.route("/books")
 def booksHandler():
-  print(books_summary)
   return jsonify({
     "books": books_summary,
     "highlights": highlights,
@@ -146,12 +145,6 @@ def getStaticShareImage():
     f"shareImage/static/share_{randint(1,6)}.jpg",
     mimetype='image/png'
   )
-
-# @app.after_request
-# def add_header(response):
-#   print(request.path)
-#   response.cache_control.max_age = 3*DAYS
-#   return response
 
 if __name__ == '__main__':
   app.run(host='127.0.0.1', port=8080, debug=True)

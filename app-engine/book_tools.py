@@ -69,7 +69,6 @@ def init():
     "group": book["group"],
     "chapterCount": len(book["chapters"])
   } for bookIdx, book in enumerate(ordered_books)]
-  print(books_summary)
 
   # load highlights
   with open("./data/highlights.json") as f:
