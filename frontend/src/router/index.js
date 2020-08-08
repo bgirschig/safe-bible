@@ -4,6 +4,7 @@ import Home from '../views/Home.vue';
 import Chapter from '../views/Chapter.vue';
 import Highlights from '../views/Highlights.vue';
 import NotFound from '../views/NotFound.vue';
+import Annexes from '../views/Annexes.vue';
 
 Vue.use(VueRouter);
 
@@ -26,7 +27,12 @@ const routes = [
     name: 'highlights',
     component: Highlights,
   },
-  { path: '/404', component: NotFound },  
+  {
+    path: '/annexes',
+    name: 'annexes',
+    component: Annexes,
+  },
+  { path: '/404', component: NotFound },
   {
     path: '/:bookId/:chapterIdx?',
     name: 'Chapter',
