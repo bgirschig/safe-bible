@@ -89,9 +89,21 @@
 <script>
 import Cover from '@/views/Cover.vue';
 import Verse from '@/components/Verse.vue';
+import appState from '@/appState';
 
 export default {
   components: { Cover, Verse },
+  data() {
+    return { appState };
+  },
+  watch: {
+    'appState.currentPanel': {
+      handler() {
+        console.log('oadfafj');
+        if (appState.currentPanel) document.querySelector('#main').scrollIntoView({ behavior: 'smooth' });
+      },
+    },
+  },
   methods: {
     handleCta(name = null) {
       document.querySelector('#main').scrollIntoView({ behavior: 'smooth' });
