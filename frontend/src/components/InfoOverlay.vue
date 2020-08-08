@@ -97,16 +97,34 @@ export default {
     updatePosition() {
       const targetSencence = this.target.$el;
       const overlay = this.$refs.overlay;
-
-      let left;
       const overlayWidth = overlay.getBoundingClientRect().width;
-      if (window.innerWidth < overlayWidth + 25) {
-        left = (window.innerWidth - overlayWidth) / 2;
-      } else {
-        left = Math.min(targetSencence.offsetLeft, window.innerWidth - overlayWidth - 25);
+      let left;
+      let top;
+
+      try {
+        const targetBounds = targetSencence.getClientRects();
+        let highestBounds = targetBounds[0];
+        let highestBoundsTop = Number.POSITIVE_INFINITY;
+        targetBounds.forEach(bounds => {
+          const top = bounds.y - bounds.height;
+          if (top < highestBoundsTop) {
+            highestBoundsTop = top;
+            highestBounds = bounds;
+          }
+        });
+        top = (targetSencence.offsetTop-targetBounds[0].y) + highestBounds.y - 5;
+        left = Math.min(highestBounds.x, window.innerWidth - overlayWidth - 25);
+      } catch (e) {
+        console.log(e);
+        top = targetSencence.offsetTop;
+        if (window.innerWidth > overlayWidth + 25) {
+          left = Math.min(targetSencence.offsetLeft, window.innerWidth - overlayWidth - 25);
+        } else {
+          left = (window.innerWidth - overlayWidth) / 2
+        }
       }
 
-      overlay.style.top = `${targetSencence.offsetTop}px`;
+      overlay.style.top = `${top}px`;
       overlay.style.left = `${left}px`;
     },
   },
