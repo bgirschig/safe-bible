@@ -1,6 +1,6 @@
 <template>
   <main id="main">
-    <div v-if="error" class="errorDisplay">{{error}}</div>
+    <div v-if="error" class="text errorDisplay">{{error}}</div>
     <div v-if="verses" class="text">
       <h1>{{appState.bookInfo.full}}</h1>
 
@@ -120,6 +120,11 @@ export default {
 <style scoped>
 .emptyMessage {
   text-align: center;
+}
+.errorDisplay {
+  text-align: center;
+  font-size: 1.2em;
+  padding-top: 3em;
 }
 
 .chapterSelector {

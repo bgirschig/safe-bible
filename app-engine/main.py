@@ -53,10 +53,13 @@ def get_sharing_for_current_route():
     sharing["image"] = f"{baseUrl}/shareImage/{chapterId}"
     sharing["url"] = f"{baseUrl}?verse={chapterId}"
   else:
-    address = parsePath(request.path)
-    if (address["bookId"] and address["bookId"] in books and len(books[address["bookId"]]["chapters"]) > 0 ):
-      sharing["image"] = f"{baseUrl}/shareImage/{address['bookId']}/{address['chapterIdx']+1}"
-      sharing["url"] = f"{baseUrl}?chapter={address['bookId']}/{address['chapterIdx']+1}"
+    try:
+      address = parsePath(request.path)
+      if (address["bookId"] and address["bookId"] in books and len(books[address["bookId"]]["chapters"]) > 0 ):
+        sharing["image"] = f"{baseUrl}/shareImage/{address['bookId']}/{address['chapterIdx']+1}"
+        sharing["url"] = f"{baseUrl}?chapter={address['bookId']}/{address['chapterIdx']+1}"
+    except:
+      pass    
   return sharing
 
 def parsePath(path):

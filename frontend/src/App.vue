@@ -196,6 +196,7 @@ main {
 }
 
 button, .btnLink {
+  font-family: 'Roboto', Avenir, Helvetica, Arial, sans-serif;
   background-color: transparent;
   border-radius: 2px;
   border: none;
