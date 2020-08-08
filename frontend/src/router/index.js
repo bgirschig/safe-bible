@@ -12,6 +12,10 @@ const routes = [
     component: Home,
   },
   {
+    path: '/index.html',
+    component: Home,
+  },
+  {
     path: '/foreword',
     name: 'foreword',
     component: Home,

@@ -24,7 +24,7 @@
 <script>
 import ArrowDown from '@/assets/icons/arrow_down.svg';
 import Cross from '@/assets/cover/cross.svg';
-import Logo from '@/assets/logo.svg';
+import Logo from '@/assets/cover-logo.svg';
 import SharingOnboarding from '@/components/SharingOnboarding.vue';
 
 export default {
