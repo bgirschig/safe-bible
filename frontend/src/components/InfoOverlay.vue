@@ -101,11 +101,18 @@ export default {
       let left;
       let top;
 
+      // try correctly positionning the overlay using getClientRects()
+      // If it fails (getClientRects may not be available), fallback to a more basic positionning
+      // based on offsetTop
       try {
         const targetBounds = targetSencence.getClientRects();
         let highestBounds = targetBounds[0];
         let highestBoundsTop = Number.POSITIVE_INFINITY;
         targetBounds.forEach((bounds) => {
+          // sometimes there is some extra 'bounds' that has invalid values, including a 0 width.
+          // we use this to discard those invalid bounds
+          if (bounds.width === 0) return;
+
           top = bounds.y - bounds.height;
           if (top < highestBoundsTop) {
             highestBoundsTop = top;
