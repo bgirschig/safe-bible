@@ -70,14 +70,11 @@ export default {
   text-align: center;
 }
 .bottomHalf {
-  padding: 10px 10px 70px 10px;
+  padding: 10px 10px 0 10px;
 }
 .topHalf {
   padding: 30px 0 30px 0;
   max-height: 40vh;
-}
-.lower {
-  padding: 20px 0 70px 0;
 }
 .logo {
   height: 100%;
@@ -88,7 +85,7 @@ max-width: 100%;
 }
 
 .crossWrapper {
-  height: 100%;
+  height: calc(100% - 70px);
   display: flex;
   flex-direction: column;
   justify-content: stretch;
