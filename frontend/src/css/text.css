@@ -93,7 +93,8 @@ h2 {
     font-size: 22px;
   }
 }
-@media (min-width: 1200px) {
+
+/* @media (min-width: 1200px) {
   .columns {
     columns: 3;
   }
@@ -110,4 +111,4 @@ h2 {
   .large {
     font-size: 20px;
   }
-}
+} */
