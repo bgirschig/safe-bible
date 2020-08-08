@@ -20,13 +20,13 @@
           </p>
           <p>
             If you believe a verse was censored by mistake, <strong>You are probably wrong</strong>:
-            The tool is trained on a vast amount of data, and is currently in use by tech companies 
+            The tool is trained on a vast amount of data, and is currently in use by tech companies
             around the world to make the web a better place.
           </p>
           <p>
-            If you believe a verse should have been censored, <strong>You are probably wrong</strong>:
-            The Bible is the infallible word of God. It is therefore impossible to find a questionable
-            verse there.
+            If you believe a verse should have been censored, <strong>You are probably
+            wrong</strong>: The Bible is the infallible word of God. It is therefore impossible to
+            find a questionable verse there.
           </p>
         </div>
 
@@ -99,7 +99,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .cta {
   margin: 4px;
   padding: 10px;
