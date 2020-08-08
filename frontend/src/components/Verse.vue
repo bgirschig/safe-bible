@@ -1,13 +1,14 @@
 <template>
   <span class="verse">
-    <sup :key="verse.verseIdx" :id="verse['verseId']">
+    <sup :id="verse['verseId']">
       <a
+        v-if="verseLabel"
         aria-label="more info about this verse"
         :href="verse.bibleHubLink"
         rel="noopener"
         target="_blank"
         class="verseNumber">
-        {{verse.verseIdx}}
+        {{verseLabel}}
       </a>
     </sup>&nbsp;<Sentence
       v-for="(sentence, sentenceIdx) in verse.sentences"
@@ -26,6 +27,18 @@ export default {
   components: { Sentence },
   props: {
     verse: { type: Object, default: null },
+    chapter: { type: String, default: null },
+  },
+  computed: {
+    verseLabel() {
+      if (!this.verse) return null;
+
+      if (this.chapter !== null) {
+        return `${this.chapter}:${this.verse.verseIdx}`;
+      } else {
+        return this.verse.verseIdx;
+      }
+    },
   },
 };
 </script>
