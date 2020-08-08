@@ -4,31 +4,29 @@
     <main id="main">
       <div class="text">
         <h1 id="foreword">Foreword</h1>
-
+        <p class="center"><i>Read the bible without the hard parts, thanks to AI</i></p>
         <div class="columns">
-          <p>The Bible is one of the most popular books in the world, but is it safe to read ?</p>
           <p>
-            This question has been tormenting since time immemorial. Across the years, attempts
-            have been made to create create a version of the holy book that was safe to read for
-            everybody, but they always faced the same problem: Humans, with all their biases and
-            interpretations, are required to do the hard, time-consuming work.</p>
-          <p>
-            However, thanks to recent progress in Artificial Intelligence, tools are now available
-            to do this in a rational and effortless way. Every sentence from the old and new
-            testament has been rated by this tool, on multiple criteria: <i>spam</i>,
-            <i>flirtation</i>, <i>profanity</i>, <i>identity attack</i>, <i>threat</i>,
-            <i>inflammatory</i>, <i>toxicity</i>, <i>severe toxicity</i>, <i>sexually explicit</i>,
-            <i>insult</i> and <i>obscene</i>.
+            The Bible is one of the most popular books in the world, but is it safe to read ?
           </p>
           <p>
-            If you believe a verse was censored by mistake, you are probably wrong: The tool that
-            was used to rate the sentences is trained on a vast amount of data, and is currently in
-            use by leading tech companies around the world to make the web a better place.
+            Many attempts have been made to create safer versions of the holy book, but they always
+            faced the same problem: Humans, with all their biases and limitations, are required to
+            do the hard, time-consuming work.
           </p>
           <p>
-            If you believe a verse should have been censored, you are probably wrong: The Bible is
-            the infallible word of God, who is by definition good and righteous. It is therefore
-            impossible to find a questionable verse there.
+            However, thanks to recent advances in Artificial Intelligence, this can now be done
+            in an effortless and rational way.
+          </p>
+          <p>
+            If you believe a verse was censored by mistake, <strong>You are probably wrong</strong>:
+            The tool is trained on a vast amount of data, and is currently in use by tech companies 
+            around the world to make the web a better place.
+          </p>
+          <p>
+            If you believe a verse should have been censored, <strong>You are probably wrong</strong>:
+            The Bible is the infallible word of God. It is therefore impossible to find a questionable
+            verse there.
           </p>
         </div>
 
@@ -36,8 +34,7 @@
         <div class="columns">
           <p>
             While reading, some verses will be blacked out. This is for your own good. We advise
-            you not to click on those, as this would reveal the censored text, and possibly
-            traumatize you
+            you not to click on those, as this would reveal the offending text.
           </p>
           <p>
             <Verse :verse="{
@@ -49,17 +46,6 @@
                   text: 'The uncircumcised male who is not circumcised in the flesh of his'+
                     'foreskin, that soul shall be cut off from his people.',
                   labels: ['THREAT', 'INFLAMMATORY', 'SEXUALLY_EXPLICIT', 'OBSCENE'],
-                }
-              ]
-            }" />
-            <Verse :verse="{
-              verseIdx: 10,
-              verseId: 'GEN/22/10',
-              bibleHubLink: 'https://biblehub.com/genesis/22-10.htm',
-              sentences: [
-                {
-                  text: 'Abraham stretched out his hand, and took the knife to kill his son.',
-                  labels: ['THREAT', 'INFLAMMATORY'],
                 }
               ]
             }" />
@@ -116,5 +102,14 @@ export default {
 <style>
 .cta {
   margin: 4px;
+  padding: 10px;
+  font-size: 0.8em;
+  padding: 1em;
+}
+h1#foreword {
+  margin-bottom: 0.5em;
+}
+strong {
+  text-decoration: underline;
 }
 </style>
