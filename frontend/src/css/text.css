@@ -96,6 +96,23 @@ p:first-child {
   .large {
     font-size: 22px;
   }
+
+  /* our z-indexes fuck up chrome's column layout.
+  these adjustments
+  - fix this issue by disabling the overlay background
+  - fix the UX broken by the above step */
+  .zIndexBugFix .infoOverlay {
+    border: thin solid rgb(var(--fontColor));
+  }
+  .zIndexBugFix .overlayBackground {
+    display: none;
+  }
+  .zIndexBugFix .censored {
+    z-index: unset;
+  }
+  .zIndexBugFix .censored.visible {
+    border: thin solid rgb(var(--fontColor));
+  }
 }
 
 /* @media (min-width: 1200px) {

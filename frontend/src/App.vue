@@ -1,7 +1,13 @@
 <template>
   <div id="app"
     @keydown.esc="closeEverything"
-    :class="[appState.settings.fontSize, {nightMode: appState.settings.nightMode}]">
+    :class="[
+      appState.settings.fontSize,
+      {
+        nightMode: appState.settings.nightMode,
+        zIndexBugFix: enableZindexFix,
+      },
+    ]">
     <transition name="slidefromleft">
       <BookBrowser v-if="showBookBrowser"/>
     </transition>
@@ -56,6 +62,11 @@ export default {
     },
     showSettings() {
       return appState.currentPanel === 'settings';
+    },
+    enableZindexFix() {
+      // The bug this adresses has been detected on chrome and safari. firefox works fine
+      const isFirefox = navigator.userAgent.toLowerCase().indexOf('firefox') > -1;
+      return !isFirefox;
     },
   },
   async mounted() {
