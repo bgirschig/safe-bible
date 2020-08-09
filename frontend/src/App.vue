@@ -102,14 +102,22 @@ export default {
       appState.currentPanel = this.showSettings ? null : 'settings';
     },
     updateAppState() {
-      appState.bookId = this.$route.params.bookId;
-      if (this.$route.name === 'Chapter') {
-        document.title = `safe bible | ${appState.bookInfo.short} ${this.$route.params.chapterIdx || 1}`;
-      } else if (this.$route.name) {
-        document.title = `safe bible | ${this.$route.name}`;
+      if (this.$route.params.chapterIdx) {
+        appState.chapterIdx = parseInt(this.$route.params.chapterIdx, 10) - 1;
       } else {
-        document.title = 'safe bible';
+        appState.chapterIdx = 0;
       }
+
+      if (this.$route.name === 'Chapter') {
+        appState.bookId = this.$route.params.bookId;
+        appState.pageTitle = `${appState.bookInfo.short} ${this.$route.params.chapterIdx || 1}`;
+        document.title = `safe bible | ${appState.bookInfo.short} ${this.$route.params.chapterIdx || 1}`;
+      } else {
+        appState.bookId = this.$route.name;
+        appState.pageTitle = this.$route.meta.title;
+      }
+      document.title = `safe bible | ${appState.pageTitle}`;
+
       // eslint-disable-next-line no-underscore-dangle
       window._paq.push(['setDocumentTitle', document.title]);
     },

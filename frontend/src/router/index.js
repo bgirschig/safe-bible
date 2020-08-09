@@ -12,18 +12,26 @@ const routes = [
   {
     path: '/',
     component: Home,
+    name: 'home',
+    meta: { title: 'Foreword' },
   },
   {
     path: '/highlights',
     name: 'highlights',
     component: Highlights,
+    meta: { title: 'Highlights' },
   },
   {
     path: '/annexes',
     name: 'annexes',
     component: Annexes,
+    meta: { title: 'Annexes' },
   },
-  { path: '/404', component: NotFound },
+  {
+    path: '/404',
+    component: NotFound,
+    meta: { title: 'Not Found' },
+  },
   {
     path: '/:bookId/:chapterIdx?',
     name: 'Chapter',

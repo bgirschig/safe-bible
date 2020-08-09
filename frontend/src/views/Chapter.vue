@@ -110,10 +110,10 @@ export default {
       this.rawVerses = null;
       switch (data.error) {
         case 'BOOK_NOT_FOUND':
-          this.error = 'Sorry, the book you\'re looking for was not found';
+          this.$router.push('/404');
           break;
         case 'CHAPTER_NOT_FOUND':
-          this.error = `Sorry, there is no chapter ${this.$route.params.chapterIdx} in ${this.$route.params.bookId}`;
+          this.$router.push('/404');
           break;
         default:
           this.error = 'Sorry, an unexpected error happened. Please try again';

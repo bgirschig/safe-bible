@@ -9,15 +9,15 @@
     <div class="navigation">
       <router-link
         aria-label="go to previous page"
-        v-visible="prev"
-        :to="prev || ''">
+        v-visible="appState.prevPageUrl"
+        :to="appState.prevPageUrl || ''">
         <ArrowLeft />
         </router-link>
-      <span class="currentChapter">{{title}}</span>
+      <span class="currentChapter">{{ appState.pageTitle }}</span>
       <router-link
         aria-label="go to next page"
-        v-visible="next"
-        :to="next || ''">
+        v-visible="appState.nextPageUrl"
+        :to="appState.nextPageUrl || ''">
         <ArrowRight />
         </router-link>
     </div>
@@ -48,67 +48,6 @@ export default {
     return {
       appState,
     };
-  },
-  computed: {
-    bookInfo() {
-      return appState.bookMap[this.bookId];
-    },
-    chapterIdx() {
-      if (this.$route.params.chapterIdx) return (parseInt(this.$route.params.chapterIdx, 10) - 1);
-      return 0;
-    },
-    verseIdx() {
-      if (this.$route.params.verseIdx) return (parseInt(this.$route.params.verseIdx, 10) - 1);
-      return 0;
-    },
-    bookId() {
-      return this.$route.params.bookId || this.$route.name || 'home';
-    },
-    title() {
-      if (!this.bookInfo) return 'Not Found';
-      if (this.bookInfo.chapterCount > 0) {
-        return `${this.bookInfo.short} ${this.chapterIdx + 1}`;
-      } else {
-        return this.bookInfo.short;
-      }
-    },
-    prev() {
-      if (!this.bookInfo) return null;
-      let linkBookId = this.bookId;
-      let linkChapter = this.chapterIdx - 1;
-
-      if (linkChapter < 0) {
-        if (!this.bookInfo.prev) return null;
-        linkBookId = this.bookInfo.prev;
-        linkChapter = appState.bookMap[linkBookId].chapterCount - 1;
-      }
-      if (appState.bookMap[linkBookId].chapterCount > 0) {
-        return `/${linkBookId}/${linkChapter + 1}`;
-      } else if (linkBookId === 'home') {
-        return '/#main'; // skip the cover, go directly to the foreword
-      } else {
-        return `/${linkBookId}`;
-      }
-    },
-    next() {
-      if (!this.bookInfo) return null;
-      let linkBookId = this.bookId;
-      let linkChapter = this.chapterIdx + 1;
-
-      if (linkChapter >= this.bookInfo.chapterCount) {
-        if (!this.bookInfo.next) return null;
-        linkBookId = this.bookInfo.next;
-        linkChapter = 0;
-      }
-
-      if (appState.bookMap[linkBookId].chapterCount > 0) {
-        return `/${linkBookId}/${linkChapter + 1}`;
-      } else if (linkBookId === 'home') {
-        return '/';
-      } else {
-        return `/${linkBookId}`;
-      }
-    },
   },
 };
 </script>
