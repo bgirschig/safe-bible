@@ -4,7 +4,7 @@
     <h2>Annexes</h2>
     <div class="columns">
       <!-- This is done manually because it doesn't integrate well with 'regular' books -->
-      <router-link class="bookLink" :to="`/home`">Home</router-link>
+      <router-link class="bookLink onlyExact" :to="`/`">Home</router-link>
       <router-link class="bookLink" :to="`/highlights`">Highlights</router-link>
       <router-link class="bookLink" :to="`/annexes#translation`">A note on translation</router-link>
       <router-link class="bookLink" :to="`/annexes#details`">Technical details</router-link>
@@ -109,7 +109,8 @@ h1 .highlight {
 .columns {
   column-count: 2;
 }
-.router-link-active {
+.onlyExact.router-link-exact-active,
+:not(.onlyExact).router-link-active {
   color: var(--accentColor);
   font-weight: bold;
 }

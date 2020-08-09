@@ -62,7 +62,7 @@ export default {
       return 0;
     },
     bookId() {
-      return this.$route.params.bookId || this.$route.name || 'foreword';
+      return this.$route.params.bookId || this.$route.name || 'home';
     },
     title() {
       if (!this.bookInfo) return 'Not Found';
@@ -84,8 +84,10 @@ export default {
       }
       if (appState.bookMap[linkBookId].chapterCount > 0) {
         return `/${linkBookId}/${linkChapter + 1}`;
+      } else if (linkBookId === 'home') {
+        return '/#main'; // skip the cover, go directly to the foreword
       } else {
-        return `/${linkBookId}#main`;
+        return `/${linkBookId}`;
       }
     },
     next() {
@@ -101,8 +103,10 @@ export default {
 
       if (appState.bookMap[linkBookId].chapterCount > 0) {
         return `/${linkBookId}/${linkChapter + 1}`;
+      } else if (linkBookId === 'home') {
+        return '/';
       } else {
-        return `/${linkBookId}#main`;
+        return `/${linkBookId}`;
       }
     },
   },

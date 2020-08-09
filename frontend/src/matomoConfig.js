@@ -1,6 +1,6 @@
 export default {
   host: 'https://matomo.bastiengirschig.com',
-  siteId: 1,
+  siteId: 2,
   debug: false,
 
   // Enables link tracking on regular links. Note that this won't

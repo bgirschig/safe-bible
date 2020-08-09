@@ -14,19 +14,6 @@ const routes = [
     component: Home,
   },
   {
-    path: '/home',
-    component: Home,
-  },
-  {
-    path: '/index.html',
-    component: Home,
-  },
-  {
-    path: '/foreword',
-    name: 'foreword',
-    component: Home,
-  },
-  {
     path: '/highlights',
     name: 'highlights',
     component: Highlights,
