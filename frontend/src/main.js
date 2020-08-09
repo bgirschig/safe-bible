@@ -14,6 +14,17 @@ Vue.prototype.$window = window;
 
 Vue.config.productionTip = false;
 
+// Report errors
+const reportError = (err) => window._paq.push(['trackEvent', 'JS Error', err]);
+Vue.config.errorHandler = (err) => {
+  reportError(err.message);
+  console.error(err);
+}
+window.onerror = (message) => {
+  reportError(message);
+  return false;
+}
+
 new Vue({
   router,
   render: (h) => h(App),
