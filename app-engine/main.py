@@ -6,7 +6,6 @@ import shareImage
 import itertools
 from random import randint
 from config import labelMap, sharingDefaults, baseUrl
-from flask_httpauth import HTTPBasicAuth
 
 DAYS = 60*60*24
 
@@ -17,25 +16,11 @@ DAYS = 60*60*24
 # - In case the appengine route definition "misses" an asset, this is a sort of fallback
 app = Flask(__name__, static_folder="static", static_url_path='/')
 app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 365*DAYS
-auth = HTTPBasicAuth()
-
-users = {
-  "bgirschig": generate_password_hash("L%mWn<JaV*QSL4-:"),
-  "jMeter": generate_password_hash(")6{iM@s>'-4zu#q"),
-  "caro-lyn": generate_password_hash("butter"),
-}
-
-@auth.verify_password
-def verify_password(username, password):
-  if username in users and \
-    check_password_hash(users.get(username), password):
-    return username
 
 # this is a trick to catch every route that didn't match anything here
 # or in the assets folder. It is necessary for vue's 'history mode'
 @app.errorhandler(404)
 @app.route("/")
-@auth.login_required
 def home(err=None):
   return render_template("index.html",
     description=sharingDefaults["description"],
