@@ -13,4 +13,6 @@ export default {
   // Tell Matomo the website domain so that clicks on these domains are not tracked as 'Outlinks'
   // Default: undefined, example: '*.example.com'
   domains: 'bible.artimproved.com',
+
+  preInitActions: [['enableJSErrorTracking']],
 };
