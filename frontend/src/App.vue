@@ -43,6 +43,7 @@ import WebFont from 'webfontloader';
 import { matomoCustomVariables, Filth, getEnumValueName } from '@/enums.js';
 import Controlbar from '@/components/Controlbar.vue';
 import appState from '@/appState.js';
+import SwipeDetector from '@/js/swipeDetector';
 import InfoOverlay from '@/components/InfoOverlay.vue';
 import BookBrowser from '@/components/BookBrowser.vue';
 import SettingsEditor from '@/components/SettingsEditor.vue';
@@ -73,6 +74,19 @@ export default {
     this.loadFonts();
     this.loadSettings();
     this.loadBooks();
+
+    this.swipeDetector = new SwipeDetector({
+      el: document.body,
+      callback: (direction) => {
+        if (direction === 'left' && appState.nextPageUrl) {
+          this.$matomo.trackEvent('swipeNav', 'next');
+          this.$router.push(appState.nextPageUrl);
+        } else if (direction === 'right' && appState.prevPageUrl) {
+          this.$matomo.trackEvent('swipeNav', 'prev');
+          this.$router.push(appState.prevPageUrl);
+        }
+      },
+    });
   },
   components: {
     Controlbar,
