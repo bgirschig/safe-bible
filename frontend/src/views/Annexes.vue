@@ -19,7 +19,7 @@
         <p>
           If you want to compare translations while reading, click on the verse number. That verse
           will be opened on <a href="https://biblehub.com/">biblehub.com</a>, where you can compare
-          a verse between 27 different translations, including the NIV, King James version, etc...)
+          a verse between 27 different translations, including the NIV, King James version, etc...
         </p>
       </div>
 
