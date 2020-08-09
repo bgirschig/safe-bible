@@ -1,4 +1,4 @@
-from flask import Flask, render_template, jsonify, request, send_file
+from flask import Flask, render_template, jsonify, request, send_file, Response
 from book_tools import books, ordered_books, highlights, get_verse_text, get_verse_labels, get_chapter_labels, books_summary
 from werkzeug.security import generate_password_hash, check_password_hash
 import json
@@ -10,6 +10,11 @@ from flask_httpauth import HTTPBasicAuth
 
 DAYS = 60*60*24
 
+# Flask 'static_folder' handler should never be hit in production: Everything should be handled by
+# appengine's static routes (defined in app.yaml)
+# We keep flask's static handler because:
+# - The appengine routes don't work in the local dev environment
+# - In case the appengine route definition "misses" an asset, this is a sort of fallback
 app = Flask(__name__, static_folder="static", static_url_path='/')
 app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 365*DAYS
 auth = HTTPBasicAuth()
@@ -70,14 +75,19 @@ def parsePath(path):
     "verseIdx": int(parts[2])-1 if len(parts)>2 else None,
   }
 
+# pre-compute booksResponse, because it needs to be as efficient as possible
+# and doesn't change from one request to the next
+booksResponse = json.dumps({
+  "books": books_summary,
+  "highlights": highlights,
+  "labelMap": labelMap,
+})
+
 @app.route("/books/")
 @app.route("/books")
 def booksHandler():
-  return jsonify({
-    "books": books_summary,
-    "highlights": highlights,
-    "labelMap": labelMap,
-  })
+  return Response(booksResponse, mimetype='application/json')
+
 
 @app.route("/chapter/<string:bookId>/<int:chapterIdx>/")
 @app.route("/chapter/<string:bookId>/<int:chapterIdx>")
