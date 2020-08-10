@@ -43,3 +43,34 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.censored {
+  cursor: pointer;
+}
+
+@media (hover: hover) {
+  .censored:not(.visible):before {
+    content: "Stay safe, Don't click";
+    position: absolute;
+    bottom: calc(100% + 6px);
+    padding: 0 10px;
+    box-sizing: border-box;
+    background-color: rgb(var(--fontColor));
+    color: var(--bgColor);
+    white-space: nowrap;
+    font-family: 'Roboto', Avenir, Helvetica, Arial, sans-serif;
+    border-radius: 3px;
+
+    /*
+      This trick is to avoid flickering when going from one line to the next in the same sentence
+      we can't do a real transition because
+    */
+    transition: visibility 0.2s;
+    visibility: hidden;
+  }
+  .censored:hover::before {
+    visibility: visible;
+  }
+}
+</style>
