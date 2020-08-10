@@ -6,11 +6,11 @@
         <h2>{{appState.highlights[bookId]["bookTitle"]}}</h2>
         <div class="columns">
           <p v-for="(chapter, chapterIdx) in book.chapters" :key="chapterIdx">
+            <span class="chapterIdx">{{ chapterIdx }}</span>
             <Verse
               v-for="(verse, verseIdx) in chapter"
               :key="verseIdx"
-              :verse="verse"
-              :chapter="chapterIdx" />
+              :verse="verse" />
           </p>
         </div>
       </div>
@@ -31,3 +31,10 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.chapterIdx {
+  font-size: 1.4em;
+  margin-right: 0.5em;
+}
+</style>
