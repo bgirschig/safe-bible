@@ -94,7 +94,7 @@ export default {
   methods: {
     handleCta(name = null) {
       document.querySelector('#main').scrollIntoView({ behavior: 'smooth' });
-      this.$matomo.trackEvent('cta', name);
+      window._paq.push(['trackEvent', 'cta', name]);
     },
   },
 };

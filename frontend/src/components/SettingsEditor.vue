@@ -39,19 +39,19 @@ export default {
     setFontSize(size) {
       if (size === appState.settings.fontSize) return;
       appState.settings.fontSize = size;
-      this.$matomo.setCustomVariable(matomoCustomVariables.FONT_SIZE, 'font-size', size);
+      window._paq.push(['setCustomVariable', matomoCustomVariables.FONT_SIZE, 'font-size', size]);
     },
     setDarkMode(value) {
       if (value === appState.settings.nightMode) return;
       appState.settings.nightMode = value;
-      this.$matomo.setCustomVariable(matomoCustomVariables.DARK_MODE, 'dark-mode', value);
+      window._paq.push(['setCustomVariable', matomoCustomVariables.DARK_MODE, 'dark-mode', value]);
     },
     setFilthAmount(value) {
       if (value === appState.settings.filthAmount) return;
       else appState.settings.filthAmount = value;
 
       const name = getEnumValueName(Filth, value);
-      this.$matomo.setCustomVariable(matomoCustomVariables.FILTH_SELECT, 'filth-amount', name);
+      window._paq.push(['setCustomVariable', matomoCustomVariables.FILTH_SELECT, 'filth-amount', name]);
     },
   },
 };

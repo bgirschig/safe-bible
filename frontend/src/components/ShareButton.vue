@@ -18,7 +18,7 @@ export default {
       const left = Math.floor((window.innerWidth - width) * 0.5);
       const top = Math.floor((window.innerHeight - height) * 0.5);
       window.open(this.url, '', `top=${top},left=${left},width=${width},height=${height},menubar=no,scrollbars=no,statusbar=no'`);
-      this.$matomo.trackEvent('shareVerse', this.platformName, this.sharedInfo);
+      window._paq.push(['trackEvent', 'shareVerse', this.platformName, this.sharedInfo]);
     },
   },
 };

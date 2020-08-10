@@ -85,11 +85,11 @@ export default {
       el: document.body,
       callback: (direction) => {
         if (direction === 'left' && appState.nextPageUrl) {
-          this.$matomo.trackEvent('swipeNav', 'next');
           this.$router.push(appState.nextPageUrl);
+          window._paq.push(['trackEvent', 'swipeNav', 'next']);
         } else if (direction === 'right' && appState.prevPageUrl) {
-          this.$matomo.trackEvent('swipeNav', 'prev');
           this.$router.push(appState.prevPageUrl);
+          window._paq.push(['trackEvent', 'swipeNav', 'prev']);
         }
       },
     });
