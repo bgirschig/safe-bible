@@ -34,8 +34,10 @@ h2 {
   position: relative;
   box-decoration-break: clone;
 }
-.censored:not(.visible):hover {
-  opacity: 0.8;
+@media (hover:hover) {
+  .censored:not(.visible):hover {
+    opacity: 0.8;
+  }
 }
 .censored.visible {
   background-color: var(--bgColor);
