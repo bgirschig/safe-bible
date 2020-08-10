@@ -103,6 +103,18 @@ export default {
         }
       },
     });
+
+    window.savedVerses = new Set();
+    document.body.addEventListener('keyup', (e) => {
+      if (e.key === 's' && (appState.currentSentence || appState.hoveredSentence)) {
+        const sentence = (appState.currentSentence || appState.hoveredSentence);
+        const id = sentence.verseId;
+        if (window.savedVerses.has(id)) window.savedVerses.delete(id);
+        else window.savedVerses.add(id);
+
+        console.log(window.savedVerses);
+      }
+    });
   },
   components: {
     Controlbar,
@@ -191,6 +203,9 @@ export default {
     closeEverything() {
       appState.currentPanel = null;
       appState.currentSentence = null;
+    },
+    saveHovered() {
+      console.log('saveHovered');
     },
   },
 };
