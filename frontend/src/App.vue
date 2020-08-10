@@ -35,6 +35,10 @@
       ref="overlay"
       @close="appState.currentSentence=null"
       :target="appState.currentSentence" />
+
+    <Tooltip v-if="showCensorTooltip" :target="appState.hoveredSentence">
+      Stay safe, Don't click
+    </Tooltip>
   </div>
 </template>
 
@@ -48,6 +52,7 @@ import SwipeDetector from '@/js/swipeDetector';
 import InfoOverlay from '@/components/InfoOverlay.vue';
 import BookBrowser from '@/components/BookBrowser.vue';
 import SettingsEditor from '@/components/SettingsEditor.vue';
+import Tooltip from '@/components/Tooltip.vue';
 import '@/css/common.css';
 import '@/css/text.css';
 import '@/css/transitions.css';
@@ -75,6 +80,11 @@ export default {
         .toLowerCase()
         .replace(/_/g, '-');
     },
+    showCensorTooltip() {
+      return appState.hoveredSentence
+        && !appState.currentSentence
+        && appState.hoveredSentence.censored;
+    },
   },
   async mounted() {
     this.loadFonts();
@@ -99,6 +109,7 @@ export default {
     InfoOverlay,
     BookBrowser,
     SettingsEditor,
+    Tooltip,
   },
   watch: {
     $route() {

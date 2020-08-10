@@ -1,5 +1,7 @@
 <template>
   <span
+    @mouseenter="mouseenter"
+    @mouseleave="mouseleave"
     @click="toggleVisibility"
     :class="{censored, clean, sentence: true, visible}">
     {{text}}
@@ -40,6 +42,15 @@ export default {
       appState.currentSentence = this;
       window._paq.push(['trackEvent', 'revealVerse', this.verseId]);
     },
+    mouseenter() {
+      clearTimeout(this.hoverLeaveTimeout);
+      appState.hoveredSentence = this;
+    },
+    mouseleave() {
+      this.hoverLeaveTimeout = setTimeout(() => {
+        if (appState.hoveredSentence === this) appState.hoveredSentence = null;
+      }, 200);
+    },
   },
 };
 </script>
@@ -47,32 +58,5 @@ export default {
 <style scoped>
 .censored {
   cursor: pointer;
-}
-
-@media (hover: hover) {
-  .censored:not(.visible):before {
-    content: "Stay safe, Don't click";
-    position: absolute;
-    bottom: calc(100% + 6px);
-    padding: 0 10px;
-    box-sizing: border-box;
-    background-color: rgb(var(--fontColor));
-    border: 0.1px solid rgba(var(--bgColorValues), 0.3);
-    color: var(--bgColor);
-    white-space: nowrap;
-    font-family: 'Roboto', Avenir, Helvetica, Arial, sans-serif;
-    border-radius: 3px;
-    z-index: 3;
-
-    /*
-      This trick is to avoid flickering when going from one line to the next in the same sentence
-      we can't do a real transition because
-    */
-    transition: visibility 0.2s;
-    visibility: hidden;
-  }
-  .censored:hover::before {
-    visibility: visible;
-  }
 }
 </style>

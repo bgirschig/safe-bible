@@ -54,6 +54,7 @@ import facebookIcon from '@/assets/icons/social/facebook.svg';
 import pinterestIcon from '@/assets/icons/social/pinterest.svg';
 import redditIcon from '@/assets/icons/social/reddit.svg';
 import twitterIcon from '@/assets/icons/social/twitter.svg';
+import { computeOverlayPosition } from '@/js/layout';
 
 export default {
   components: {
@@ -95,44 +96,10 @@ export default {
   },
   methods: {
     updatePosition() {
-      const targetSencence = this.target.$el;
-      const overlay = this.$refs.overlay;
-      const overlayWidth = overlay.getBoundingClientRect().width;
-      let left;
-      let top;
+      const { left, top } = computeOverlayPosition(this.target.$el, this.$refs.overlay);
 
-      // try correctly positionning the overlay using getClientRects()
-      // If it fails (getClientRects may not be available), fallback to a more basic positionning
-      // based on offsetTop
-      try {
-        const targetBounds = targetSencence.getClientRects();
-        let highestBounds = targetBounds[0];
-        let highestBoundsTop = Number.POSITIVE_INFINITY;
-        targetBounds.forEach((bounds) => {
-          // sometimes there is some extra 'bounds' that has invalid values, including a 0 width.
-          // we use this to discard those invalid bounds
-          if (bounds.width === 0) return;
-
-          top = bounds.y - bounds.height;
-          if (top < highestBoundsTop) {
-            highestBoundsTop = top;
-            highestBounds = bounds;
-          }
-        });
-        top = (targetSencence.offsetTop - targetBounds[0].y) + highestBounds.y - 5;
-        left = Math.min(highestBounds.x, window.innerWidth - overlayWidth - 25);
-      } catch (e) {
-        console.log(e);
-        top = targetSencence.offsetTop;
-        if (window.innerWidth > overlayWidth + 25) {
-          left = Math.min(targetSencence.offsetLeft, window.innerWidth - overlayWidth - 25);
-        } else {
-          left = (window.innerWidth - overlayWidth) / 2;
-        }
-      }
-
-      overlay.style.top = `${top}px`;
-      overlay.style.left = `${left}px`;
+      this.$refs.overlay.style.top = `${top}px`;
+      this.$refs.overlay.style.left = `${left}px`;
     },
   },
   mounted() {

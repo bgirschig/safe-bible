@@ -10,6 +10,7 @@ export default new Vue({
       chapterIdx: 0,
       pageTitle: null,
       currentSentence: null,
+      hoveredSentence: null,
       currentPanel: null,
       labelMap: null,
       settings: {
