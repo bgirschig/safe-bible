@@ -85,8 +85,9 @@ export default {
   watch: {
     'appState.currentPanel': {
       handler() {
-        console.log('oadfafj');
-        if (appState.currentPanel) document.querySelector('#main').scrollIntoView({ behavior: 'smooth' });
+        if (appState.currentPanel) {
+          document.querySelector('#main').scrollIntoView({ behavior: 'smooth' });
+        }
       },
     },
   },
