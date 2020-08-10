@@ -57,10 +57,12 @@ export default {
     padding: 0 10px;
     box-sizing: border-box;
     background-color: rgb(var(--fontColor));
+    border: 0.1px solid rgba(var(--bgColorValues), 0.3);
     color: var(--bgColor);
     white-space: nowrap;
     font-family: 'Roboto', Avenir, Helvetica, Arial, sans-serif;
     border-radius: 3px;
+    z-index: 3;
 
     /*
       This trick is to avoid flickering when going from one line to the next in the same sentence

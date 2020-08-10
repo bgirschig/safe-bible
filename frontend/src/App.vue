@@ -200,7 +200,8 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  --bgColor: white;
+  --bgColorValues: 255, 255, 255;
+  --bgColor: rgb(var(--bgColorValues));
   --fontColor: 0, 0, 0;
   --linkColor: rgb(0, 101, 255);
   --accentColor: #297176;
@@ -223,6 +224,7 @@ a {
 #app.nightMode {
   background-color: rgb(25, 25, 25);
 
+  --bgColorValues: 0, 0, 0;
   --bgColor: black;
   --fontColor: 150, 150, 150;
   --linkColor: rgb(117 164 234);
