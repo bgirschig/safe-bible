@@ -43,7 +43,7 @@ export default {
   components: { Verse },
   data() {
     return {
-      rawVerses: null,
+      verses: null,
       error: null,
       appState,
     };
@@ -55,31 +55,6 @@ export default {
     nextChaptersCount() {
       if (!appState.bookInfo.chapterCount) return 0;
       return appState.bookInfo.chapterCount - this.current;
-    },
-    verses() {
-      if (!this.rawVerses) return null;
-
-      // Make a copy: we're going to modify the contents
-      const verses = JSON.parse(JSON.stringify(this.rawVerses));
-
-      switch (appState.settings.filthAmount) {
-        case Filth.KEEP_EVERYTHING:
-          return verses;
-        case Filth.NO_FILTH:
-          /* eslint-disable no-param-reassign */
-          return verses.filter((verse) => {
-            verse.sentences = verse.sentences.filter((sentence) => sentence.labels.length === 0);
-            return verse.sentences.length > 0;
-          });
-          /* eslint-enable no-param-reassign */
-        default:
-          /* eslint-disable no-param-reassign */
-          return verses.filter((verse) => {
-            verse.sentences = verse.sentences.filter((sentence) => sentence.labels.length > 0);
-            return verse.sentences.length > 0;
-          });
-          /* eslint-enable no-param-reassign */
-      }
     },
     emptyMessage() {
       switch (appState.settings.filthAmount) {
@@ -104,10 +79,10 @@ export default {
     }
     const data = await response.json();
     if (response.ok) {
-      this.rawVerses = data;
+      this.verses = data;
       this.error = null;
     } else {
-      this.rawVerses = null;
+      this.verses = null;
       switch (data.error) {
         case 'BOOK_NOT_FOUND':
           this.$router.push('/404');

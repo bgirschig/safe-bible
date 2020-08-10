@@ -3,6 +3,7 @@
     @keydown.esc="closeEverything"
     :class="[
       appState.settings.fontSize,
+      filthClass,
       {
         nightMode: appState.settings.nightMode,
         zIndexBugFix: enableZindexFix,
@@ -68,6 +69,11 @@ export default {
       // The bug this adresses has been detected on chrome and safari. firefox works fine
       const isFirefox = navigator.userAgent.toLowerCase().indexOf('firefox') > -1;
       return !isFirefox;
+    },
+    filthClass() {
+      return getEnumValueName(Filth, appState.settings.filthAmount)
+        .toLowerCase()
+        .replace(/_/g, '-');
     },
   },
   async mounted() {

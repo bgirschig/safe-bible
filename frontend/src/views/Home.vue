@@ -5,7 +5,7 @@
       <div class="text">
         <h1 id="foreword">Foreword</h1>
         <p class="center"><i>Read the bible without the hard parts, thanks to AI</i></p>
-        <div class="columns">
+        <div class="columns clean">
           <p>
             The Bible is one of the most popular books in the world, but is it safe to read ?
           </p>
@@ -32,7 +32,7 @@
 
         <h1 id="howto">How to use</h1>
         <div class="columns">
-          <p>
+          <p class="clean">
             While reading, some verses will be blacked out. This is for your own good. We advise
             you not to click on those, as this would reveal the offending text.
           </p>
@@ -111,5 +111,11 @@ h1#foreword {
 }
 strong {
   text-decoration: underline;
+}
+
+/* Because this page's text is set manually (most of it is not 'verses') the automatic-hiding
+feature doesn't work here, so 'clean' classes we added to 'normal' text, and we'll them from here */
+.only-filth .clean {
+  display: none;
 }
 </style>

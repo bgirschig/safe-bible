@@ -1,5 +1,5 @@
 <template>
-  <span class="verse">
+  <span v-if="sentences.length > 0" class="verse">
     <sup :id="verse['verseId']">
       <a
         v-if="verseLabel"
@@ -11,7 +11,7 @@
         {{verseLabel}}
       </a>
     </sup>&nbsp;<Sentence
-      v-for="(sentence, sentenceIdx) in verse.sentences"
+      v-for="(sentence, sentenceIdx) in sentences"
       :key="`${verse.verseIdx}-${sentenceIdx}`"
       :text="sentence.text"
       :labelIds="sentence.labels"
@@ -22,6 +22,8 @@
 
 <script>
 import Sentence from '@/components/Sentence.vue';
+import appState from '@/appState';
+import { Filth } from '@/enums.js';
 
 export default {
   components: { Sentence },
@@ -38,6 +40,20 @@ export default {
       } else {
         return this.verse.verseIdx;
       }
+    },
+    sentences() {
+      return this.verse.sentences.filter((sentence) => {
+        switch (appState.settings.filthAmount) {
+          case Filth.KEEP_EVERYTHING:
+            return true;
+          case Filth.NO_FILTH:
+            return sentence.labels.length === 0;
+          case Filth.ONLY_FILTH:
+            return sentence.labels.length > 0;
+          default:
+            throw new Error(`unexpected filth setting: ${appState.settings.filthAmount}`);
+        }
+      });
     },
   },
 };
