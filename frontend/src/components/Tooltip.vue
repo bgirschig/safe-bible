@@ -36,7 +36,7 @@ export default {
   padding: 5px;
   box-sizing: border-box;
   background-color: var(--bgColor);
-  border: 1px solid rgba(0,0,0, 0.9);
+  border: 1px solid rgba(var(--fontColor), 0.5);
   white-space: nowrap;
   font-family: 'Roboto', Avenir, Helvetica, Arial, sans-serif;
   border-radius: 3px;
