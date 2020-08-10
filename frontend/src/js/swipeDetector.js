@@ -40,6 +40,10 @@ export default class SwipeDetector {
       y: e.touches[0].clientY,
       time: new Date(),
     };
+    this.lastTouchPos = {
+      x: e.touches[0].clientX,
+      y: e.touches[0].clientY,
+    };
   }
 
   handleTouchMove(e) {
@@ -50,6 +54,7 @@ export default class SwipeDetector {
 
   handleTouchEnd() {
     if (!this.touchStart || !this.lastTouchPos) return;
+
     const deltaT = new Date() - this.touchStart.time;
     if (deltaT > this.maxTime) return;
     const dx = this.lastTouchPos.x - this.touchStart.x;
