@@ -91,19 +91,31 @@ export default {
   },
   watch: {
     target() {
-      this.updatePosition();
+      this.onTargetChange();
     },
   },
   methods: {
-    updatePosition() {
+    onTargetChange() {
       const { left, top } = computeOverlayPosition(this.target.$el, this.$refs.overlay);
-
       this.$refs.overlay.style.top = `${top}px`;
       this.$refs.overlay.style.left = `${left}px`;
+
+      if (this.target.verseId === 'EZK/25/17') {
+        if (!this.audio) this.audio = new Audio('/audio/EZK-25-17.mp3');
+        if (this.audio.paused) {
+          this.audio.currentTime = 0;
+          this.audio.play();
+        }
+      } else if (this.audio) {
+        this.audio.pause();
+      }
     },
   },
   mounted() {
-    this.updatePosition();
+    this.onTargetChange();
+  },
+  beforeDestroy() {
+    if (this.audio) this.audio.pause();
   },
 };
 </script>
