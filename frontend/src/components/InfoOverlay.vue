@@ -101,7 +101,7 @@ export default {
       this.$refs.overlay.style.left = `${left}px`;
 
       if (this.target.verseId === 'EZK/25/17') {
-        if (!this.audio) this.audio = new Audio('/audio/EZK-25-17.mp3');
+        if (!this.audio) this.audio = new Audio('/EZK-25-17.mp3');
         if (this.audio.paused) {
           this.audio.currentTime = 0;
           this.audio.play();
