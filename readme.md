@@ -1,4 +1,4 @@
-# safeBible-vue
+# The [safe] holy bible
 
 This is a re-implementation of [safe bible](https://github.com/bgirschig/safeBible), but as a
 single page application
