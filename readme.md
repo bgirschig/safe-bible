@@ -1,4 +1,4 @@
-# The [safe] holy bible
+# The [safe] Holy Bible
 
 This is a re-implementation of [safe bible](https://github.com/bgirschig/safeBible), but as a
 single page application
