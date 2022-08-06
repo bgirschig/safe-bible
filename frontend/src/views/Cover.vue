@@ -50,7 +50,7 @@ export default {
   z-index: 3;
   position: relative;
 
-  background-image: url("~@/assets/cover/background.jpeg");
+  /* background-image: url("~@/assets/cover/background.jpeg"); */
   background-position: center;
   background-size: cover;
   background-attachment: fixed;
